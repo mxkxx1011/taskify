@@ -20,6 +20,8 @@ import IconInvisible from './icons/ic_invisible.svg';
 import IconInstagram from './icons/ic_instagram.svg';
 import IconFacebook from './icons/ic_facebook.svg';
 import IconEnvelop from './icons/ic_envelop.svg';
+import IconAddChip from './icons/ic_add_chip.svg';
+import IconCircleChip from './icons/ic_circle_chip.svg';
 
 export {
   IconAddBox,
@@ -44,4 +46,6 @@ export {
   IconInvisible,
   IconFacebook,
   IconEnvelop,
+  IconAddChip,
+  IconCircleChip,
 };
