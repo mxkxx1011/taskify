@@ -70,3 +70,22 @@ th {
 body {
   overflow: auto;
 }
+
+a,
+a:hover {
+  color: inherit; /* 부모 요소의 색상 상속 */
+  text-decoration: none; /* 밑줄 제거 */
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+
+ol,
+ul {
+  list-style: none;
+}
