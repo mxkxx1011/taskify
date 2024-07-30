@@ -10,3 +10,19 @@
   line-height: 14.32px;
   color: $gray-78;
 }
+
+.add {
+  @include Flex(row, center, center);
+  width: 22px;
+  height: 22px;
+  padding: 3px;
+  border-radius: 4px;
+
+  background-color: $violet-8;
+  color: $violet;
+
+  @include mobile {
+    width: 20px;
+    height: 20px;
+  }
+}
