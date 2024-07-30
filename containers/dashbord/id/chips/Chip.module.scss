@@ -1,6 +1,7 @@
 @use '@/styles/index.scss' as *;
 @import '@/styles/mixins/mixinChip';
 
+// chip - num 컴포넌트
 .num {
   padding: 3px 6px;
   border-radius: 4px;
@@ -12,6 +13,7 @@
   color: $gray-78;
 }
 
+// chip - add 컴포넌트
 .add {
   @include Flex(row, center, center);
   width: 22px;
@@ -27,6 +29,18 @@
     height: 20px;
   }
 }
+
+// chip - card 컴포넌트
+.card {
+  width: fit-content;
+  padding: 4px 6px;
+  border-radius: 4px;
+
+  @include font-style(12, 400);
+  line-height: 14px;
+}
+
+// chip - progress 컴포넌트
 .progress {
   padding: 4px 8px;
   border-radius: 11px;
@@ -44,6 +58,7 @@
   }
 }
 
+// 색상들은 컴포넌트들 색상에 맞게 믹스인을 사용하도록 설정함
 .pink {
   @include getProgressChipColor('pink');
 
@@ -74,13 +89,4 @@
   svg {
     @include getCircleColor('blue');
   }
-}
-
-.card {
-  width: fit-content;
-  padding: 4px 6px;
-  border-radius: 4px;
-
-  @include font-style(12, 400);
-  line-height: 14px;
 }

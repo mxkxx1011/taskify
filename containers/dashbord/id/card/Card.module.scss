@@ -1,5 +1,6 @@
 @use '@/styles/index.scss' as *;
 
+// 카드 컴포넌트
 .card {
   width: 314px;
   padding: 20px;
@@ -14,30 +15,30 @@
   .card-content {
     @include Flex(column, null, null);
     gap: 10px;
-  }
 
-  .title {
-    @include font-style(16, 500);
-    color: $black-33;
-  }
-
-  .tags {
-    @include Flex(row, null, center);
-    gap: 6px;
-  }
-
-  .date {
-    @include Flex(row, null, center);
-    gap: 6px;
-
-    p {
-      color: $gray-78;
-      @include font-style(12, 500);
+    .title {
+      @include font-style(16, 500);
+      color: $black-33;
     }
-  }
 
-  .card-bottom {
-    @include Flex(row, space-between, center);
+    .tags {
+      @include Flex(row, null, center);
+      gap: 6px;
+    }
+
+    .date {
+      @include Flex(row, null, center);
+      gap: 6px;
+
+      p {
+        color: $gray-78;
+        @include font-style(12, 500);
+      }
+    }
+
+    .card-bottom {
+      @include Flex(row, space-between, center);
+    }
   }
 }
 
