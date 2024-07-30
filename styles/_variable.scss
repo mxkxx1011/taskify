@@ -1,1 +1,25 @@
+@use '@/styles/index.scss' as *;
+
 // 온갖 종류의 css variable 모아두는 파일
+$PROGRESS_COLORS: (
+  'violet': (
+    background-color: $violet-8,
+    color: $violet,
+  ),
+  'pink': (
+    background-color: $pink-f7,
+    color: $pink,
+  ),
+  'green': (
+    background-color: $green-e7,
+    color: $green,
+  ),
+  'blue': (
+    background-color: $blue-db,
+    color: $blue,
+  ),
+  'orange': (
+    background-color: $orange-f9,
+    color: $orange,
+  ),
+);

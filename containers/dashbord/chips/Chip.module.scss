@@ -1,4 +1,5 @@
 @use '@/styles/index.scss' as *;
+@import '@/styles/mixins/mixinChip';
 
 .num {
   padding: 3px 6px;
@@ -24,5 +25,53 @@
   @include mobile {
     width: 20px;
     height: 20px;
+  }
+}
+.progress {
+  padding: 4px 8px;
+  border-radius: 11px;
+  width: fit-content;
+
+  @include Flex(row, null, center);
+  gap: 3px;
+
+  @include font-style(10, 400);
+  line-height: 12px;
+
+  @include getProgressChipColor('violet');
+  svg {
+    @include getCircleColor('violet');
+  }
+}
+
+.pink {
+  @include getProgressChipColor('pink');
+
+  svg {
+    @include getCircleColor('pink');
+  }
+}
+
+.green {
+  @include getProgressChipColor('green');
+
+  svg {
+    @include getCircleColor('green');
+  }
+}
+
+.orange {
+  @include getProgressChipColor('orange');
+
+  svg {
+    @include getCircleColor('orange');
+  }
+}
+
+.blue {
+  @include getProgressChipColor('blue');
+
+  svg {
+    @include getCircleColor('blue');
   }
 }

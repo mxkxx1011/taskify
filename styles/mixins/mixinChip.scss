@@ -1,0 +1,21 @@
+@use '@/styles/index.scss' as *;
+@use '@/styles/variable' as *;
+
+@mixin getProgressChipColor($color) {
+  @if map-has-key($PROGRESS_COLORS, $color) {
+    $style: map-get($PROGRESS_COLORS, $color);
+    background-color: map-get($style, background-color);
+    color: map-get($style, color);
+  } @else {
+    background-color: $violet-8;
+    color: $violet;
+  }
+}
+@mixin getCircleColor($color) {
+  @if map-has-key($PROGRESS_COLORS, $color) {
+    $style: map-get($PROGRESS_COLORS, $color);
+    fill: map-get($style, color);
+  } @else {
+    fill: $violet;
+  }
+}
