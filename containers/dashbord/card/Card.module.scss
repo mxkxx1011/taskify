@@ -1,0 +1,59 @@
+@use '@/styles/index.scss' as *;
+
+.card {
+  width: 314px;
+  padding: 20px;
+
+  border-radius: 6px;
+  border: 1px solid $gray-d9;
+
+  background-color: $white;
+  @include Flex(column, null, null);
+  gap: 12px;
+
+  .card-content {
+    @include Flex(column, null, null);
+    gap: 10px;
+  }
+
+  .title {
+    @include font-style(16, 500);
+    color: $black-33;
+  }
+
+  .tags {
+    @include Flex(row, null, center);
+    gap: 6px;
+  }
+
+  .date {
+    @include Flex(row, null, center);
+    gap: 6px;
+
+    p {
+      color: $gray-78;
+      @include font-style(12, 500);
+    }
+  }
+
+  .card-bottom {
+    @include Flex(row, space-between, center);
+  }
+}
+
+// 임시 프로필 스타일 (패스해도 되는 부분)
+// 헤더에서 쓰이길래 공통 컴포넌트에서 만들면 지우겠습니다~!
+.profile {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  @include Flex(row, center, center);
+  background-color: #a3c4a2;
+  color: $white;
+
+  font-family: Montserrat;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 14.63px;
+  text-align: center;
+}
