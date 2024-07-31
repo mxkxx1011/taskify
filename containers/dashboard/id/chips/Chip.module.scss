@@ -8,7 +8,7 @@
   background-color: $gray-ee;
   width: fit-content;
 
-  @include font-style(12, 500);
+  @include FontStyle(12, 500);
   line-height: 14.32px;
   color: $gray-78;
 }
@@ -36,7 +36,7 @@
   padding: 4px 6px;
   border-radius: 4px;
 
-  @include font-style(12, 400, 12, 10);
+  @include FontStyle(12, 400, 12, 10);
   line-height: 14.3px;
 
   @include mobile {
@@ -53,44 +53,44 @@
   @include Flex(row, null, center);
   gap: 3px;
 
-  @include font-style(10, 400);
+  @include FontStyle(10, 400);
   line-height: 12px;
 
-  @include getProgressChipColor('violet');
+  @include GetProgressChipColor('violet');
   svg {
-    @include getCircleColor('violet');
+    @include GetCircleColor('violet');
   }
 }
 
 // 색상들은 컴포넌트들 색상에 맞게 믹스인을 사용하도록 설정함
 .pink {
-  @include getProgressChipColor('pink');
+  @include GetProgressChipColor('pink');
 
   svg {
-    @include getCircleColor('pink');
+    @include GetCircleColor('pink');
   }
 }
 
 .green {
-  @include getProgressChipColor('green');
+  @include GetProgressChipColor('green');
 
   svg {
-    @include getCircleColor('green');
+    @include GetCircleColor('green');
   }
 }
 
 .orange {
-  @include getProgressChipColor('orange');
+  @include GetProgressChipColor('orange');
 
   svg {
-    @include getCircleColor('orange');
+    @include GetCircleColor('orange');
   }
 }
 
 .blue {
-  @include getProgressChipColor('blue');
+  @include GetProgressChipColor('blue');
 
   svg {
-    @include getCircleColor('blue');
+    @include GetCircleColor('blue');
   }
 }

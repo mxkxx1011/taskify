@@ -70,7 +70,7 @@
 
     // 제목
     .title {
-      @include font-style(16, 500, 16, 14);
+      @include FontStyle(16, 500, 16, 14);
       line-height: 19px;
       color: $black-33;
 
@@ -99,7 +99,7 @@
 
       p {
         color: $gray-78;
-        @include font-style(12, 500, 12, 10);
+        @include FontStyle(12, 500, 12, 10);
         line-height: 14px;
 
         @include mobile {
