@@ -12,32 +12,109 @@
   @include Flex(column, null, null);
   gap: 12px;
 
+  @include tablet {
+    height: 93px;
+    width: 100%;
+
+    @include Flex(row, null, null);
+    gap: 20px;
+  }
+
+  @include mobile {
+    flex-direction: column;
+    gap: 10.18px;
+    height: auto;
+  }
+
+  // 카드 이미지
+  img {
+    @include tablet {
+      width: 90.76px;
+      height: 53px;
+    }
+
+    @include mobile {
+      width: 100%;
+      height: 151.82px;
+
+      object-fit: cover;
+    }
+  }
+
+  // 태그, 캘린더, 프로필 감싸는 div
+  .card-information {
+    @include Flex(column, null, null);
+    gap: 10px;
+
+    @include tablet {
+      @include Flex(row, null, center);
+      gap: 16px;
+    }
+    @include mobile {
+      @include Flex(column, null, flex-start);
+      gap: 6px;
+    }
+  }
+
+  // 이미지 제외 부분
   .card-content {
     @include Flex(column, null, null);
     gap: 10px;
 
-    .title {
-      @include font-style(16, 500);
-      color: $black-33;
+    @include tablet {
+      width: 100%;
+    }
+    @include mobile {
+      gap: 6px;
     }
 
+    // 제목
+    .title {
+      @include font-style(16, 500, 16, 14);
+      line-height: 19px;
+      color: $black-33;
+
+      @include mobile {
+        line-height: 16.7px;
+      }
+    }
+
+    // 태그들
     .tags {
       @include Flex(row, null, center);
       gap: 6px;
     }
 
+    // 날짜랑 달력 svg
     .date {
-      @include Flex(row, null, center);
+      @include Flex(row, null, flex-end);
       gap: 6px;
+
+      svg {
+        @include mobile {
+          width: 14px;
+          height: 14px;
+        }
+      }
 
       p {
         color: $gray-78;
-        @include font-style(12, 500);
+        @include font-style(12, 500, 12, 10);
+        line-height: 14px;
+
+        @include mobile {
+          line-height: 12px;
+        }
       }
     }
 
+    // 날짜랑 프로필
     .card-bottom {
       @include Flex(row, space-between, center);
+      @include tablet {
+        flex: 1;
+        width: 100%;
+      }
     }
   }
 }
