@@ -105,18 +105,22 @@ $WEIGHTS: (
   // 태블릿에서 폰트 사이즈 적용
   @include tablet {
     @if $tablet-size != null {
-      font-size: #{$tablet-size}px;
-    } @else {
-      font-size: #{$desktop-size}px;
+      @if map-has-key($TEXT_STYLES, $tablet-size) {
+        $style: map-get($TEXT_STYLES, $tablet-size);
+        font-size: map-get($style, font-size);
+        line-height: map-get($style, line-height);
+      }
     }
   }
 
   // 모바일에서 폰트 사이즈 적용
   @include mobile {
     @if $mobile-size != null {
-      font-size: #{$mobile-size}px;
-    } @else {
-      font-size: #{$desktop-size}px;
+      @if map-has-key($TEXT_STYLES, $mobile-size) {
+        $style: map-get($TEXT_STYLES, $mobile-size);
+        font-size: map-get($style, font-size);
+        line-height: map-get($style, line-height);
+      }
     }
   }
 }
