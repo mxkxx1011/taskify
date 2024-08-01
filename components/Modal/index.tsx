@@ -1,29 +1,6 @@
 import Button from '@/components/Button';
 import styles from './index.module.scss';
-
-const modalValues: Record<ModalType, IModal> = {
-  create: {
-    title: '새 컬럼 생성',
-    label: '이름',
-    placeholder: '새 컬럼의 이름을 입력하세요',
-    leftBtn: '취소',
-    rightBtn: '생성',
-  },
-  manage: {
-    title: '컬럼 관리',
-    label: '이름',
-    placeholder: '변경할 컬럼 이름을 입력하세요',
-    leftBtn: '취소',
-    rightBtn: '생성',
-  },
-  invite: {
-    title: '초대하기',
-    label: '이메일',
-    placeholder: '초대할 이메일을 입력하세요',
-    leftBtn: '취소',
-    rightBtn: '초대',
-  },
-};
+import { modalValues } from '@/constants/ModalConstant';
 
 function Modal({
   type = 'create',
@@ -31,7 +8,7 @@ function Modal({
   handleRightBtnClick,
 }: {
   type: ModalType;
-  handleLeftBtnClick: any;
+  handleLeftBtnClick: any; // 타입 any는 나중에 수정 예정
   handleRightBtnClick: any;
 }) {
   return (
