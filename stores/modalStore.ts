@@ -6,10 +6,22 @@ interface ModalState {
   setCloseModal: () => void;
 }
 
-const useModalStore = create<ModalState>((set) => ({
+const useCreateModalStore = create<ModalState>((set) => ({
   isModalOpen: false,
   setOpenModal: () => set({ isModalOpen: true }),
   setCloseModal: () => set({ isModalOpen: false }),
 }));
 
-export default useModalStore;
+const useManageModalStore = create<ModalState>((set) => ({
+  isModalOpen: false,
+  setOpenModal: () => set({ isModalOpen: true }),
+  setCloseModal: () => set({ isModalOpen: false }),
+}));
+
+const useInviteModalStore = create<ModalState>((set) => ({
+  isModalOpen: false,
+  setOpenModal: () => set({ isModalOpen: true }),
+  setCloseModal: () => set({ isModalOpen: false }),
+}));
+
+export { useCreateModalStore, useManageModalStore, useInviteModalStore };

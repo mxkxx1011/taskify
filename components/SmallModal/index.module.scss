@@ -1,5 +1,6 @@
 @use '@/styles/index.scss' as *;
 @import '@/styles/mixins/mixinChip';
+@import '@/styles/mixins/mixinModal';
 
 .modal {
   width: 568px;
@@ -8,6 +9,8 @@
 
   background-color: $white;
   padding: 24px;
+
+  @include ModalStyle;
 
   @include Flex(column, null, null);
   @include ResponsiveGap(24, 16, 16);
@@ -51,6 +54,10 @@
     @include Size(100%, 54px);
 
     @include FontStyle(lg, semibold);
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   .left-btn {

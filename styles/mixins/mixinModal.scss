@@ -1,0 +1,21 @@
+@use '@/styles/index.scss' as *;
+@import '@/styles/levels';
+
+@mixin ModalBackStyle {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background-color: rgba($black, 0.35);
+  z-index: $modal-back-index;
+}
+
+@mixin ModalStyle {
+  z-index: $modal-index;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
