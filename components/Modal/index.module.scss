@@ -1,0 +1,66 @@
+@use '@/styles/index.scss' as *;
+@import '@/styles/mixins/mixinChip';
+
+.modal {
+  width: 568px;
+  padding: 24px;
+  border-radius: 8px;
+
+  background-color: $white;
+  padding: 24px;
+
+  @include Flex(column, null, null);
+  @include ResponsiveGap(24, 16, 16);
+
+  @include tablet {
+    width: 327px;
+  }
+
+  .title {
+    @include FontStyle('2xl', bold, '2xl', xl);
+    color: $black-33;
+  }
+
+  .input-wrapper {
+    @include Flex(column, null, null);
+    gap: 8px;
+
+    label {
+      @include FontStyle('2lg', medium);
+      color: $black-33;
+    }
+
+    input {
+      background-color: $white;
+      border: 1px solid $gray-d9;
+      padding: 15px 16px;
+      height: 50px;
+      border-radius: 8px;
+      width: 100%;
+    }
+  }
+}
+
+.button-wrapper {
+  @include Flex(row, null, null);
+  @include ResponsiveGap(8, 7, 7);
+
+  button {
+    border-radius: 8px;
+    padding: 14px 46px;
+    @include Size(100%, 54px);
+
+    @include FontStyle(lg, semibold);
+  }
+
+  .left-btn {
+    color: $gray-78;
+    background-color: $white;
+    border: 1px solid $gray-d9;
+  }
+
+  .right-btn {
+    color: $white;
+    background-color: $violet;
+  }
+}
