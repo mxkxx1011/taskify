@@ -18,9 +18,11 @@ function ModalPortal({
 
   useEffect(() => {
     setMounted(true);
+    document.body.style.overflow = 'hidden';
 
     return () => {
       setMounted(false);
+      document.body.style.overflow = 'auto';
     };
   }, []);
 
