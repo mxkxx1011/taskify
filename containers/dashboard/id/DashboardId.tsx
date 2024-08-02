@@ -1,20 +1,29 @@
 import Button from '@/components/Button';
 import Column from '@/containers/dashboard/id/column/Column';
+import useColumnList from '@/hooks/useColumnList';
 import { useCreateModalStore } from '@/stores/modalStore';
+import { useRouter } from 'next/router';
+
 import styles from './index.module.scss';
 import CreateModal from './modals/CreateModal';
 
 function DashboardId() {
-  const { isModalOpen, setOpenModal } = useCreateModalStore();
+  const router = useRouter();
+  const { id } = router.query;
 
-  // zustand로 저장한 컬럼 목록 가져오기
+  const { isModalOpen, setOpenModal } = useCreateModalStore();
+  const { columnList, isLoading, error } = useColumnList(id);
+
+  if (isLoading) return <h2>...loading</h2>;
+  if (error) return <h2>error</h2>;
 
   return (
     <section className={styles['main-section']}>
-      {/* 컬럼 목록 배열을 map 메소드로 Column 렌더링 */}
-      <Column id={5} title='To Do' />
-      <Column id={5} title='To Do' />
-      <Column id={5} title='To Do' />
+      <>
+        {columnList.map((column: IColumn) => {
+          return <Column id={column.id} title={column.title} key={column.id} />;
+        })}
+      </>
       <div className={styles['etc-wrapper']}>
         <Button buttonType='add-column' onClick={setOpenModal}>
           새로운 컬럼 추가하기

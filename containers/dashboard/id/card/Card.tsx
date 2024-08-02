@@ -8,9 +8,8 @@ function Card({ card }: { card: ICard }) {
   const { title, tags, dueDate, imageUrl } = card;
   return (
     <div className={styles['card']}>
-      {/* <img src='/card_image1.png' alt='image' width={274} height={160} /> */}
       {imageUrl && (
-        <Image src={imageUrl} alt='image' width={274} height={160} />
+        <Image src={imageUrl} alt='image' width={274} height={160} priority />
       )}
       <div className={styles['card-content']}>
         <p className={styles['title']}>{title}</p>

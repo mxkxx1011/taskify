@@ -1,7 +1,7 @@
 import styles from './index.module.scss';
 import { modalValues } from '@/constants/ModalConstant';
 import { useEffect } from 'react';
-import classNames from 'classnames';
+import classNames from 'classNames';
 
 function SmallModal({
   type,
