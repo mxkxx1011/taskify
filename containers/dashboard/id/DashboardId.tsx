@@ -28,7 +28,7 @@ function DashboardId() {
         <Button buttonType='add-column' onClick={setOpenModal}>
           새로운 컬럼 추가하기
         </Button>
-        {isModalOpen && <CreateModal />}
+        {isModalOpen && <CreateModal id={id} />}
       </div>
     </section>
   );
