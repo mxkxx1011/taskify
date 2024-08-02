@@ -85,6 +85,10 @@ $WEIGHTS: (
   $tablet-size: null,
   $mobile-size: null
 ) {
+  font-family: 'Pretendard Variable', Pretendard, -apple-system,
+    BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI',
+    'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
   -webkit-font-smoothing: antialiased;
 
   // 데스크탑에서 폰트 사이즈 및 폰트 웨이트 적용
