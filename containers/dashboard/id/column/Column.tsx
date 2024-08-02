@@ -4,6 +4,8 @@ import ChipNum from '@/containers/dashboard/id/chips/ChipNum';
 import { useRouter } from 'next/router';
 import Button from '@/components/Button';
 import Card from '@/containers/dashboard/id/card/Card';
+import { useManageModalStore } from '@/stores/modalStore';
+import ManageModal from '../modals/ManageModal';
 
 // 컬럼 목록을 토대로 각 아이디를 통해 카드 목록 가져오기 이것도 저장
 
@@ -85,6 +87,7 @@ const cardList = [
 
 function Column({ id, title }: { id: number; title: string }) {
   const router = useRouter();
+  const { isModalOpen, setOpenModal } = useManageModalStore();
 
   return (
     <div className={styles['column']}>
@@ -96,10 +99,14 @@ function Column({ id, title }: { id: number; title: string }) {
             <ChipNum num={3} />
           </div>
         </div>
-        <IconSetting onClick={() => router.push('/dashboard/id')} />
+        <IconSetting
+          className={styles['setting-icon']}
+          onClick={setOpenModal}
+        />
+        {isModalOpen && <ManageModal />}
       </div>
       <div className={styles['card-list']}>
-        <Button deviceType='desktop' buttonType='add-todo' />
+        <Button buttonType='add-todo' />
         {cardList.map((card) => (
           <Card card={card} key={card.id} />
         ))}
