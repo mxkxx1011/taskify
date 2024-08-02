@@ -24,7 +24,7 @@ function Column({ id, title }: { id: number; title: string }) {
         .then((data) => data.cards),
   });
 
-  const { isModalOpen, setOpenModal } = useManageModalStore();
+  const { ManageModalId, setOpenManageModal } = useManageModalStore();
 
   if (isLoading) return <h2>loading</h2>;
   if (error) return <h2>error</h2>;
@@ -41,9 +41,9 @@ function Column({ id, title }: { id: number; title: string }) {
         </div>
         <IconSetting
           className={styles['setting-icon']}
-          onClick={setOpenModal}
+          onClick={() => setOpenManageModal(id)}
         />
-        {isModalOpen && <ManageModal />}
+        {ManageModalId === id && <ManageModal defaultValue={title} />}
       </div>
       <div className={styles['card-list']}>
         <Button buttonType='add-todo' />

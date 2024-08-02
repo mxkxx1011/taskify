@@ -12,10 +12,16 @@ const useCreateModalStore = create<ModalState>((set) => ({
   setCloseModal: () => set({ isModalOpen: false }),
 }));
 
-const useManageModalStore = create<ModalState>((set) => ({
-  isModalOpen: false,
-  setOpenModal: () => set({ isModalOpen: true }),
-  setCloseModal: () => set({ isModalOpen: false }),
+interface ManageModalState {
+  ManageModalId: number | null;
+  setOpenManageModal: (id: any) => void;
+  setCloseManageModal: () => void;
+}
+
+const useManageModalStore = create<ManageModalState>((set) => ({
+  ManageModalId: null,
+  setOpenManageModal: (id) => set({ ManageModalId: id }),
+  setCloseManageModal: () => set({ ManageModalId: null }),
 }));
 
 const useInviteModalStore = create<ModalState>((set) => ({

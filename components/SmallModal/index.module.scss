@@ -12,8 +12,10 @@
 
   @include ModalStyle;
 
-  @include Flex(column, null, null);
-  @include ResponsiveGap(24, 16, 16);
+  .form {
+    @include Flex(column, null, null);
+    @include ResponsiveGap(24, 16, 16);
+  }
 
   @include tablet {
     width: 327px;
