@@ -1,4 +1,3 @@
-import ReactQueryProviders from '@/hooks/useReactQuery';
 import { Html, Head, Main, NextScript } from 'next/document';
 
 export default function Document() {
@@ -6,11 +5,9 @@ export default function Document() {
     <Html lang='ko'>
       <Head />
       <body>
-        <ReactQueryProviders>
-          <Main />
-          <div id='_modal'></div>
-          <NextScript />
-        </ReactQueryProviders>
+        <Main />
+        <div id='_modal'></div>
+        <NextScript />
       </body>
     </Html>
   );
