@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import TodoModal from '@/containers/dashboard/id/modals/todoModal/TodoModal';
-
+import TodoEditModal from '@/containers/dashboard/id/modals/todoEditModal/TodoEditModal';
+import TodoCreateModal from '@/containers/dashboard/id/modals/todoCreateModal/TodoCreateModal';
 export default function Home() {
   return (
     <>
@@ -12,6 +13,8 @@ export default function Home() {
       </Head>
       <main>
         <TodoModal />
+        <TodoEditModal />
+        <TodoCreateModal />
       </main>
     </>
   );

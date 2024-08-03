@@ -23,6 +23,7 @@ textarea,
 ul {
   margin: 0;
   padding: 0;
+  -webkit-font-smoothing: antialiased;
 }
 h1,
 h2,
@@ -37,11 +38,14 @@ ul {
   list-style: none;
 }
 button,
-input,
 select {
   margin: 0;
   border: none;
   cursor: pointer;
+}
+input {
+  margin: 0;
+  border: none;
 }
 html {
   box-sizing: border-box;
