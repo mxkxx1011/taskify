@@ -1,25 +1,53 @@
 @use '@/styles/index' as *;
 
+.list {
+  @include ResponsiveWidth(378px, 378px, 100%);
+
+  @include mobile {
+    max-width: 343px;
+  }
+
+  &:nth-child(1) {
+    img {
+      @include ResponsiveWidth(300px, 300px, 260px);
+      @include ResponsiveHeight(124px, 124px, 107.4px);
+    }
+  }
+
+  &:nth-child(2) {
+    img {
+      @include ResponsiveWidth(300px, 300px, 260px);
+      @include ResponsiveHeight(230.8px, 230.8px, 200px);
+    }
+  }
+  &:nth-child(3) {
+    img {
+      @include ResponsiveWidth(300px, 300px, 260px);
+      @include ResponsiveHeight(195.5px, 195.5px, 169.4px);
+    }
+  }
+}
+
 .top {
-  @include Size(378px, 260px);
+  @include Flex(row, center, center);
+  @include ResponsiveHeight(260px, 260px, 236px);
   @include border-radius(8px 8px 0 0);
 
   background-color: $black-4b;
-  @include Flex(row, center, center);
 }
 
 .bottom {
-  @include Flex(column, null, null);
+  @include ResponsiveHeight(124px, 124px, 112.5px);
+  @include Flex(column, center, null);
+  @include border-radius(0 0 8px 8px);
   gap: 18px;
 
-  @include border-radius(0 0 8px 8px);
-  @include Size(378px, 124px);
-  padding: 33px 0 0 32px;
+  @include ResponsivePadding(0 0 0 32px, 0 0 0 32px, 0 0 0 28px);
 
   background-color: $black-17;
 
   .title {
-    @include FontStyle(2lg, bold);
+    @include FontStyle('2lg', bold);
     color: $white;
   }
   .description {

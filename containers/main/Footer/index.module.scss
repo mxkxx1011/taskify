@@ -2,15 +2,30 @@
 
 .footer {
   border-top: 1px solid $gray-d9;
-  @include Size(100%, 100px);
+  width: 100%;
   padding: 39px 140px;
+
+  @include tablet {
+    padding: 40.5px 40px;
+  }
 
   div {
     @include Flex(row, space-between, center);
   }
 
+  .footer-wrapper {
+    @include mobile {
+      @include Flex(column, null, null);
+      gap: 12px;
+
+      .socials {
+        margin-top: 56px;
+      }
+    }
+  }
+
   .links {
-    gap: 32px;
+    @include ResponsiveGap(32, 32, 20);
   }
 
   .socials {

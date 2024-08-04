@@ -1,83 +1,162 @@
 @use '@/styles/index' as *;
 
+.strong {
+  color: $main-yellow;
+}
+
 .main {
   margin: 130px auto 160px;
   width: 1200px;
+
+  @include tablet {
+    width: 100%;
+    padding: 0 40px;
+  }
+  @include mobile {
+    padding: 0 16px;
+  }
 }
 
 .hero-section {
   @include Flex(column, center, center);
   gap: 40px;
 
+  .hero-img {
+    @include ResponsiveWidth(722px, 722px, 150%);
+    height: 100%;
+  }
+
+  .manage {
+    width: 100%;
+    @include mobile {
+      height: 70px;
+    }
+  }
+
+  .logo {
+    width: 50%;
+    @include mobile {
+      height: 40px;
+    }
+  }
+
   .hero-title {
     @include Flex(column, center, center);
 
     .logo {
-      margin-top: -20px;
+      // margin-top: -20px;
     }
   }
 }
 
 .section-list {
   @include Flex(column, null, null);
-  gap: 90px;
+  @include ResponsiveGap(90, 90, 59);
 }
 
 .section-background {
   width: 100%;
-  height: 600px;
-  border-radius: 8px;
+  @include ResponsiveHeight(600px, 972px, 686px);
+  @include border-radius(8px);
   background-color: $gray-fa;
-}
 
-.landing-img-01 {
-  @include Size(594px, 497.5px);
-}
+  .section-title {
+    @include Flex(column, null, null);
+    @include ResponsiveGap(100, 100, 61);
 
-.landing-img-02 {
-  @include Size(436px, 502px);
-}
+    @include mobile {
+      align-items: center;
+      text-align: center;
+    }
 
-.section-title {
-  @include Flex(column, null, null);
-  gap: 100px;
+    p {
+      color: $gray-9f;
+      @include FontStyle(22, medium, 22, 18);
+      @include ResponsiveLineHeight(26.3, 26.3, 21.5);
+    }
 
-  p {
-    color: $gray-9f;
-    @include FontStyle('2xl', medium);
+    h2 {
+      @include FontStyle(48, bold, 48, 36);
+      @include ResponsiveLineHeight(64, 64, 50);
+    }
   }
 
-  h2 {
-    font-family: Pretendard;
-    font-size: 48px;
-    font-weight: 700;
-    line-height: 64px;
+  .landing-img-01 {
+    @include ResponsiveWidth(594px, 519.4px, 296.1px);
+    @include ResponsiveHeight(497.5px, 435px, 248px);
+  }
+
+  .landing-img-02 {
+    @include ResponsiveWidth(436px, 360.4px, 217px);
+    @include ResponsiveHeight(502px, 415px, 250px);
   }
 }
 
 .section-01 {
-  padding: 123px 0 0 60px;
+  @include ResponsivePadding(123px 0 0 60px, 63px 0 0 60px, 60px 0 0 0);
   @include Flex(row, space-between, null);
+  @include ResponsiveGap(null, 220, 194);
+
+  @include tablet {
+    @include Flex(column, null, null);
+
+    .img-wrapper {
+      @include Flex(row, flex-end, null);
+    }
+  }
 }
 
 .section-02 {
-  padding: 98px 0 0 108px;
-  @include Flex(row, null, null);
-  gap: 100px;
-}
+  @include ResponsivePadding(98px 0 0 108px, 63px 0 0 60px, 60px 0 0 0);
 
-.strong {
-  color: $main-yellow;
+  @include Flex(row, null, null);
+  @include ResponsiveGap(100, 240, 192);
+  // gap: 100px;
+
+  @include tablet {
+    @include Flex(column, null, null);
+
+    .section-title {
+      order: 1;
+    }
+
+    .img-wrapper {
+      @include Flex(row, center, null);
+      order: 2;
+    }
+  }
 }
 
 .list {
   @include Flex(row, null, null);
-  gap: 33px;
+  @include ResponsiveGap(33, 48, 40.5);
+
+  @include tablet {
+    @include Flex(column, null, center);
+    width: 100%;
+  }
 }
 
 .section-setting-title {
-  @include FontStyle('2xl', bold);
-  font-size: 28px;
+  @include FontStyle(28, bold, 28, 22);
+  @include ResponsiveLineHeight(33, 33, 26.25);
 
   margin-bottom: 36px;
+}
+
+.img-wrapper {
+  width: fit-content;
+
+  @include tablet {
+    width: 100%;
+  }
+}
+
+.bottom-section {
+  @include tablet {
+    @include Flex(column, null, center);
+  }
+  @include mobile {
+    margin-top: 31px;
+  }
 }

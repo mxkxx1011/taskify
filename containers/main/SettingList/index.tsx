@@ -8,7 +8,7 @@ interface ISettingList {
 function SettingList({ list }: { list: ISettingList }) {
   const { image, title, description } = list;
   return (
-    <div>
+    <div className={styles['list']}>
       <div className={styles['top']}>{image()}</div>
       <div className={styles['bottom']}>
         <p className={styles['title']}>{title}</p>

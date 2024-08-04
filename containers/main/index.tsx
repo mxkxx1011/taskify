@@ -1,63 +1,20 @@
+import Image from 'next/image';
 import Header from '@/components/Header/HeaderMain';
 import styles from './index.module.scss';
 
-import LandingImage from '@/assets/landing/landing-trans-svg.svg';
-import HeroImage from '@/assets/landing/hero-image.svg';
-import Button from '@/components/Button';
-
-import LogoText from '@/assets/logos/LogoTextBlack.svg';
+// 히어로 섹션
 import ManageText from '@/assets/logos/manage.svg';
-// import Logo from '@/assets/logos/LogoSchedoEffect.svg';
-import LogoMini from '@/assets/logos/LogoYellow.svg';
+import HeroImage from '@/assets/landing/hero-image.svg';
 import Logo from '@/assets/logos/LogoYellowBorder.svg';
 import LoginButton from '@/containers/main/LoginButton';
-import Image from 'next/image';
+
+//중간 섹션
 import LandingImage01 from '@/assets/landing/landing1.png';
 import LandingImage02 from '@/assets/landing/landing2.png';
-import LandingImage03 from '@/assets/landing/landing3.png';
-import LandingImage04 from '@/assets/landing/landing4.png';
-import LandingImage05 from '@/assets/landing/landing5.png';
+
 import SettingList from './SettingList';
 import Footer from './Footer';
-
-const Landing03 = () => {
-  return (
-    <Image src={LandingImage03} alt='setting-image' width={300} height={124} />
-  );
-};
-const Landing04 = () => {
-  return (
-    <Image src={LandingImage04} alt='setting-image' width={300} height={231} />
-  );
-};
-const Landing05 = () => {
-  return (
-    <Image
-      src={LandingImage05}
-      alt='setting-image'
-      width={300}
-      height={195.5}
-    />
-  );
-};
-
-const SettingListValues = [
-  {
-    image: Landing03,
-    title: '대시보드 설정',
-    description: '대시보드 사진과 이름을 변경할 수 있어요.',
-  },
-  {
-    image: Landing04,
-    title: '초대',
-    description: '새로운 팀원을 초대할 수 있어요.',
-  },
-  {
-    image: Landing05,
-    title: '구성원',
-    description: '구성원을 초대하고 내보낼 수 있어요.',
-  },
-];
+import { SettingListValues } from '@/constants/MainPageConstants';
 
 function MainPage() {
   return (
@@ -65,13 +22,12 @@ function MainPage() {
       <Header />
       <main className={styles['main']}>
         <section className={styles['hero-section']}>
-          <HeroImage width={722} height={423} />
+          <HeroImage className={styles['hero-img']} />
 
-          <p className={styles['hero-title']}>
-            <ManageText />
-
+          <div className={styles['hero-title']}>
+            <ManageText className={styles['manage']} />
             <Logo className={styles['logo']} />
-          </p>
+          </div>
 
           <LoginButton />
         </section>
@@ -89,22 +45,25 @@ function MainPage() {
                 관리하세요
               </h2>
             </div>
-
-            <Image
-              className={styles['landing-img-01']}
-              src={LandingImage01}
-              alt='랜딩이미지'
-            />
+            <div className={styles['img-wrapper']}>
+              <Image
+                className={styles['landing-img-01']}
+                src={LandingImage01}
+                alt='랜딩이미지'
+              />
+            </div>
           </section>
 
           <section
             className={`${styles['section-background']} ${styles['section-02']}`}
           >
-            <Image
-              className={styles['landing-img-02']}
-              src={LandingImage02}
-              alt='랜딩이미지'
-            />
+            <div className={styles['img-wrapper']}>
+              <Image
+                className={styles['landing-img-02']}
+                src={LandingImage02}
+                alt='랜딩이미지'
+              />
+            </div>
             <div className={styles['section-title']}>
               <p>Point 2</p>
 
@@ -116,7 +75,7 @@ function MainPage() {
             </div>
           </section>
 
-          <section>
+          <section className={styles['bottom-section']}>
             <h2 className={styles['section-setting-title']}>
               생산성을 높이는 다양한 설정 ⚡️
             </h2>
