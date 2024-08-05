@@ -1,0 +1,13 @@
+@use '@/styles/index' as *;
+
+.assignee {
+  @include Flex(row, null, center);
+  gap: 6px;
+}
+
+.profile-img {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background-color: $gray-d9;
+}

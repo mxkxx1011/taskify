@@ -1,0 +1,14 @@
+@import '@/styles/index';
+
+@mixin MenuStyle {
+  width: 217px;
+  border-radius: 6px;
+  border: 1px solid $gray-9f;
+}
+
+@mixin ListStyle {
+  @include Flex(row, null, center);
+  padding: 10px;
+  height: 48px;
+  cursor: pointer;
+}

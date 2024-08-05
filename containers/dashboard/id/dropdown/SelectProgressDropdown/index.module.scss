@@ -1,0 +1,44 @@
+@use '@/styles/index' as *;
+@import '@/styles/mixins/mixinDropdown';
+@import '@/styles/animations';
+
+.button {
+  @include MenuStyle;
+  @include ListStyle;
+
+  position: relative;
+
+  & > svg {
+    position: absolute;
+    right: 5px;
+
+    &.open {
+      animation: rotateDown 0.3s forwards;
+    }
+
+    &.close {
+      animation: rotateUp 0.3s forwards;
+    }
+  }
+}
+
+.menu {
+  @include MenuStyle;
+}
+
+.list {
+  @include ListStyle;
+
+  &:hover {
+    background-color: #eeeeee;
+  }
+}
+
+.select-input {
+  position: relative;
+
+  article {
+    position: absolute;
+    top: 50px;
+  }
+}
