@@ -13,6 +13,10 @@
   @include Flex(column, null, null);
   @include ResponsiveGap(12, 20, 11);
 
+  &:hover {
+    cursor: pointer;
+  }
+
   @include tablet {
     height: 93px;
     width: 100%;
