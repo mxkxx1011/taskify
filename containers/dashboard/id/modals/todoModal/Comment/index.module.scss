@@ -1,0 +1,82 @@
+@import '@/styles/index';
+
+.comment-card {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  border-bottom: 1px solid $gray-d9;
+  padding: 12px 0;
+
+  .profile-img {
+    @include Size(34px);
+    background-color: $gray-d9;
+    border-radius: 50%;
+  }
+
+  .comment-contents {
+    @include Flex(column, null, null);
+    gap: 6px;
+
+    .writer-and-date {
+      @include Flex(row, null, center);
+      gap: 8px;
+    }
+
+    .writer {
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 16px;
+    }
+
+    .date {
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 14px;
+      color: $gray-9f;
+    }
+
+    .comment-text {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 16px;
+      color: $black-33;
+    }
+
+    .edit-and-delete {
+      @include Flex(row, null, null);
+      gap: 12px;
+      margin-top: 3px;
+
+      .button {
+        text-decoration: underline;
+        background-color: transparent;
+        padding: 0;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 15px;
+        color: $gray-9f;
+      }
+    }
+  }
+}
+
+@include mobile {
+  .comment-contents {
+    gap: 16px;
+  }
+  .writer {
+    font-size: 12px;
+    line-height: 14px;
+  }
+  .date {
+    font-size: 10px;
+  }
+  .comment-text {
+    font-size: 12px;
+    line-height: 18px;
+  }
+  .button {
+    font-size: 10px;
+    line-height: 12px;
+  }
+}
