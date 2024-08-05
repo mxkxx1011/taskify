@@ -181,10 +181,13 @@
 .kebab {
   position: relative;
 
-  & > ul {
+  & > article {
     position: absolute;
     top: 28px;
     right: 0;
-    background-color: $white;
+
+    ul {
+      background-color: $white;
+    }
   }
 }

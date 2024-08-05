@@ -1,0 +1,18 @@
+@import '@/styles/animations';
+
+.fade-in {
+  overflow: hidden;
+}
+
+.fade-in > ul {
+  animation: slide-fade-in-dropdown-animation 0.4s ease;
+}
+
+.fade-out {
+  overflow: hidden;
+}
+
+.fade-out > ul {
+  animation: slide-fade-out-dropdown-animation 0.4s ease;
+  animation-fill-mode: forwards;
+}

@@ -55,7 +55,10 @@ export default function TodoModal({ card }: { card: ICard }) {
           <p className={styles['title']}>{title}</p>
           <div className={styles['empty-block']}></div>
           <div className={styles['kebab-and-close']}>
-            <div className={styles['kebab']}>
+            <div
+              className={styles['kebab']}
+              onBlur={() => setIsKebabOpen(false)}
+            >
               <button
                 type='button'
                 onClick={() => setIsKebabOpen((prev) => !prev)}
@@ -63,7 +66,7 @@ export default function TodoModal({ card }: { card: ICard }) {
               >
                 <IconKebab className={styles['icon']} />
               </button>
-              {isKebabOpen && <KebabDropdown />}
+              {isKebabOpen && <KebabDropdown isOpen={isKebabOpen} />}
             </div>
             <button
               type='button'
