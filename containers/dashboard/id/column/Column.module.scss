@@ -46,6 +46,7 @@
 
 .card-list {
   overflow-y: auto;
+  overscroll-behavior: none;
   @include Flex(column, null, null);
   @include ResponsiveGap(16, 16, 10);
 
