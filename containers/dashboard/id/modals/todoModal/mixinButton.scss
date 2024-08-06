@@ -1,0 +1,19 @@
+@import '@/styles/index';
+
+//임시
+@mixin ButtonStyle {
+  width: fit-content;
+  padding: 9px 31px;
+
+  border-radius: 4px;
+  outline: 1px solid $gray-d9;
+  @include FontStyle(xs, medium);
+  color: $main-yellow;
+  background-color: $white;
+  white-space: nowrap;
+  border: none;
+
+  &:hover {
+    background-color: $gray-d9;
+  }
+}
