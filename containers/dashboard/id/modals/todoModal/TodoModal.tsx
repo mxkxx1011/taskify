@@ -15,6 +15,7 @@ import Comment from './Comment';
 import useColumnList from '@/hooks/useColumnList';
 import useCommentList from '@/hooks/useCommentList';
 import useTodoModalStore from '@/stores/todoModalStore';
+import CommentForm from './CommentForm';
 
 export default function TodoModal({ card }: { card: ICard }) {
   const [isKebabOpen, setIsKebabOpen] = useState<boolean>(false);
@@ -24,7 +25,7 @@ export default function TodoModal({ card }: { card: ICard }) {
   const { id: dashboardId } = router.query;
 
   const {
-    id,
+    id: cardId,
     title,
     description,
     tags,
@@ -32,12 +33,10 @@ export default function TodoModal({ card }: { card: ICard }) {
     assignee,
     imageUrl,
     columnId,
-    createdAt,
-    updatedAt,
   } = card;
 
   const { columnList, isLoading } = useColumnList(dashboardId);
-  const { commentList, isLoading: isCommentLoading } = useCommentList(id);
+  const { commentList, isLoading: isCommentLoading } = useCommentList(cardId);
 
   const currentColumn = columnList.filter(
     (column: IColumn) => column.id === columnId,
@@ -45,8 +44,8 @@ export default function TodoModal({ card }: { card: ICard }) {
 
   // 나중에 에러처리 하기
   if (!TodoModalId) return <></>;
-  if (isLoading) return <>todomodal loading</>;
-  if (isCommentLoading) return <>comment loading</>;
+  if (isLoading) return <></>;
+  if (isCommentLoading) return <></>;
 
   return (
     <ModalPortal onClose={setCloseTodoModal}>
@@ -99,13 +98,11 @@ export default function TodoModal({ card }: { card: ICard }) {
                 alt='일정 사진'
               />
             )}
-            <div className={styles['comment-input-container']}>
-              <p className={styles['comment-title']}>댓글</p>
-              <textarea
-                className={styles['comment-input']}
-                placeholder='댓글 작성하기'
-              />
-            </div>
+            <CommentForm
+              cardId={cardId}
+              columnId={currentColumn[0].id}
+              dashboardId={Number(dashboardId)}
+            />
             <div className={styles['comment-list']}>
               {commentList.map((comment: IComment) => (
                 <Comment comment={comment} />
