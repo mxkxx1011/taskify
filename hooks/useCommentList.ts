@@ -9,7 +9,7 @@ function useCommentList(id: number) {
     isLoading,
     error,
   } = useQuery({
-    queryKey: [`getCommentList${id}`],
+    queryKey: ['getCommentList', id],
     queryFn: async () =>
       await axios
         .get(`/comments?size${SIZE}&cardId=${id}`)

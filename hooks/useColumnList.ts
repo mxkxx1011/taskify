@@ -7,7 +7,7 @@ function useColumnList(id: string | string[] | undefined) {
     isLoading,
     error,
   } = useQuery({
-    queryKey: [`getColumnList ${id}`],
+    queryKey: ['getColumnList', id],
     queryFn: () =>
       axios
         .get(`/columns?dashboardId=${id}`)

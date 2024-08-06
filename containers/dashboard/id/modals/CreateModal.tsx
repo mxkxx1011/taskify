@@ -14,7 +14,7 @@ function CreateModal(id: any) {
     mutationFn: (newTitle: string) =>
       axios.post(`/columns`, { title: newTitle, dashboardId: Number(id.id) }),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['getColumnList'] });
+      queryClient.invalidateQueries({ queryKey: ['getColumnList', id] });
       setCloseModal();
     },
   });

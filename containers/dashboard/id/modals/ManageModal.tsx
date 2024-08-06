@@ -3,10 +3,14 @@ import SmallModal from '@/components/SmallModal';
 import { useManageModalStore } from '@/stores/modalStore';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import axios from '@/services/axios';
+import { useRouter } from 'next/router';
 
 function ManageModal({ defaultValue }: { defaultValue: string }) {
   const { ManageModalId, setCloseManageModal } = useManageModalStore();
   const queryClient = useQueryClient();
+
+  const router = useRouter();
+  const { id: dashboardId } = router.query;
 
   // 컬럼 이름 변경하는 mutate 함수
   const updateColumnMutation = useMutation({
@@ -14,7 +18,9 @@ function ManageModal({ defaultValue }: { defaultValue: string }) {
       axios.put(`/columns/${ManageModalId}`, { title: newTitle }),
     onSuccess: () => {
       // 해당 쿼리 키 값을 가진 데이터를 새로 get
-      queryClient.invalidateQueries({ queryKey: ['getColumnList'] });
+      queryClient.invalidateQueries({
+        queryKey: ['getColumnList', dashboardId],
+      });
       setCloseManageModal();
     },
   });
@@ -23,7 +29,9 @@ function ManageModal({ defaultValue }: { defaultValue: string }) {
   const deleteColumnMutation = useMutation({
     mutationFn: () => axios.delete(`/columns/${ManageModalId}`),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['getColumnList'] });
+      queryClient.invalidateQueries({
+        queryKey: ['getColumnList', dashboardId],
+      });
       setCloseManageModal();
     },
   });
