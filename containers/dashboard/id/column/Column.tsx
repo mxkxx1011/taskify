@@ -12,6 +12,7 @@ import {
   useTodoCreateModalStore,
 } from '@/stores/modalStore';
 import styles from './Column.module.scss';
+import EmptyColumn from './EmptyColumn';
 
 function Column({ id, title }: { id: number; title: string }) {
   const {
@@ -53,7 +54,7 @@ function Column({ id, title }: { id: number; title: string }) {
         <Button buttonType='add-todo' onClick={setOpenModal} />
         <>
           {cardList.length === 0 ? (
-            <h2>empty</h2>
+            <EmptyColumn />
           ) : (
             cardList.map((card: ICard) => <Card card={card} key={card.id} />)
           )}
