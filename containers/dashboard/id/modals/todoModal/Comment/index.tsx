@@ -81,6 +81,9 @@ function Comment({ comment }: { comment: IComment }) {
           <div className={styles['writer-and-date']}>
             <p className={styles['writer']}>{nickname}</p>
             <p className={styles['date']}>{getDate(createdAt, true)}</p>
+            {createdAt !== updatedAt && (
+              <p className={styles['date']}>(수정됨)</p>
+            )}
             <IconKebab width={18} height={18} />
             {/* kebab 드롭다운으로 변경하기 */}
           </div>
