@@ -22,7 +22,7 @@
   text-align: center;
 }
 
-.butten-wrapper {
+.button-wrapper {
   width: 100%;
   @include Flex(row, null, center);
   @include ResponsiveGap(8, 8, 7);

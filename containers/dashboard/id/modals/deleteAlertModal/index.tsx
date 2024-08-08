@@ -40,7 +40,7 @@ function DeleteAlertModal() {
             '{title}' 컬럼과 해당 컬럼의{' '}
             <span className={styles['line']}>모든 카드가 삭제됩니다.</span>
           </p>
-          <div className={styles['butten-wrapper']}>
+          <div className={styles['button-wrapper']}>
             <Button
               type='button'
               buttonType='secondary'
