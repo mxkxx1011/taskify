@@ -1,0 +1,17 @@
+@use '@/styles/index.scss' as *;
+
+.main {
+  &:last-child {
+    margin-top: 70px;
+    margin-left: 300px;
+
+    @include tablet {
+      margin-left: 160px;
+    }
+
+    @include mobile {
+      margin-top: 60px;
+      margin-left: 67px;
+    }
+  }
+}
