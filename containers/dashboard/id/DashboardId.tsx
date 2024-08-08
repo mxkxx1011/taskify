@@ -12,10 +12,13 @@ import TodoCreateModal from '@/containers/dashboard/id/modals/todoCreateModal/To
 import styles from './index.module.scss';
 import CreateModal from './modals/CreateModal';
 import { DragDropContext } from 'react-beautiful-dnd';
+import { useQueryClient } from '@tanstack/react-query';
+import { onDragEnd, onDragStart } from '@/services/dragService';
 
 function DashboardId() {
   const router = useRouter();
   const { id } = router.query;
+  const queryClient = useQueryClient();
 
   const { isModalOpen, setOpenModal } = useCreateModalStore();
   const { columnList, isLoading, error } = useColumnList(id);
@@ -25,25 +28,28 @@ function DashboardId() {
   } = useTodoCreateModalStore();
 
   const handleTodoCreateSubmit = (data: any) => {
+    // 나중에 처리
+    console.log('todo create modal submit');
     console.log(data);
     closeTodoCreateModal();
   };
 
+  // 나중에 수정
   if (isLoading) return <h2>...loading</h2>;
   if (error) return <h2>error</h2>;
 
-  const onDragEnd = (result: any) => {
-    const { destination, source, draggableId } = result;
+  const handleDragStart = () => {
+    onDragStart();
+  };
 
-    if (!result.destination) return;
-
-    //TODO: reorder out column
+  const handleDragEnd = (result: any) => {
+    onDragEnd(result, queryClient);
   };
 
   return (
     <DragDropContext
-      // onDragStart={}
-      onDragEnd={onDragEnd}
+      // onDragStart={handleDragStart}
+      onDragEnd={handleDragEnd}
       // onDragUpdate={}
     >
       <section className={styles['main-section']}>

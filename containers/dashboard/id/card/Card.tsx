@@ -9,6 +9,7 @@ import useTodoModalStore from '@/stores/todoModalStore';
 import useTodoEditModalStore from '@/stores/useTodoEditModalStore';
 import TodoEditModal from '../modals/todoEditModal/TodoEditModal';
 import { Draggable } from 'react-beautiful-dnd';
+import classNames from 'classnames';
 
 function Card({ card }: { card: ICard }) {
   const { id, title, tags, dueDate, imageUrl } = card;
@@ -18,12 +19,16 @@ function Card({ card }: { card: ICard }) {
   return (
     <>
       <Draggable draggableId={String(id)} index={id}>
-        {(provided) => (
+        {(provided, snapshot) => (
           <div
             {...provided.draggableProps}
             {...provided.dragHandleProps}
             ref={provided.innerRef}
-            className={styles['card']}
+            // isDragging={snapshot.isDragging}
+            className={classNames(
+              styles['card'],
+              snapshot.isDragging ? styles['is-dragging'] : null,
+            )}
             onClick={() => setOpenTodoModal(id)}
           >
             {imageUrl && (

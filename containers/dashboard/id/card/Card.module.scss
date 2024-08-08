@@ -17,6 +17,11 @@
     cursor: pointer;
   }
 
+  &.is-dragging {
+    opacity: 0.7;
+    // border: 1px solid $main-yellow;
+  }
+
   @include tablet {
     height: 93px;
     width: 100%;
