@@ -13,6 +13,7 @@ import {
 } from '@/stores/modalStore';
 import styles from './Column.module.scss';
 import EmptyColumn from './EmptyColumn';
+import { Droppable } from 'react-beautiful-dnd';
 
 function Column({ id, title }: { id: number; title: string }) {
   const {
@@ -50,16 +51,23 @@ function Column({ id, title }: { id: number; title: string }) {
         />
         {ManageModalId === id && <ManageModal defaultValue={title} />}
       </div>
-      <div className={styles['card-list']}>
-        <Button buttonType='add-todo' onClick={setOpenModal} />
-        <>
-          {cardList.length === 0 ? (
-            <EmptyColumn />
-          ) : (
-            cardList.map((card: ICard) => <Card card={card} key={card.id} />)
-          )}
-        </>
-      </div>
+      <Droppable droppableId={String(id)}>
+        {(provided) => (
+          <div
+            className={styles['card-list']}
+            ref={provided.innerRef}
+            {...provided.droppableProps}
+          >
+            <Button buttonType='add-todo' onClick={setOpenModal} />
+            {cardList.length === 0 ? (
+              <EmptyColumn />
+            ) : (
+              cardList.map((card: ICard) => <Card card={card} key={card.id} />)
+            )}
+            {provided.placeholder}
+          </div>
+        )}
+      </Droppable>
     </div>
   );
 }
