@@ -17,7 +17,7 @@ function DashboardIdPage() {
     if (mounted && !loading && !user) {
       router.push('/');
     }
-  });
+  }, [mounted, user]);
 
   return <DashboardId />;
 }
