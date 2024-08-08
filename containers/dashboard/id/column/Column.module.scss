@@ -10,13 +10,13 @@
   @include ResponsiveGap(24, 24, 16);
 
   &.is-dragging-over {
-    border: 1px solid $main-yellow;
+    border: 1.5px solid $main-yellow;
   }
 
   @include tablet {
     width: 100%;
     height: 346px;
-    border-bottom: 2px solid $gray-ee;
+    border-bottom: 1px solid $gray-ee;
   }
 
   @include mobile {
