@@ -81,8 +81,8 @@ function MainPage() {
             </h2>
 
             <div className={styles['list']}>
-              {SettingListValues.map((list) => (
-                <SettingList list={list} />
+              {SettingListValues.map((list, idx) => (
+                <SettingList list={list} key={idx} />
               ))}
             </div>
           </section>
