@@ -1,0 +1,42 @@
+@import '@/styles/index.scss';
+@import '@/styles/mixins/mixinModal.scss';
+
+.modal {
+  background-color: white;
+  @include ModalStyle;
+
+  @include border-radius(16px);
+  @include ResponsiveWidth(568px, 568px, 327px);
+
+  padding: 24px;
+}
+
+.modal-wrapper {
+  @include Flex(column, center, center);
+  @include ResponsiveGap(40, 40, 32);
+}
+
+.alert {
+  @include FontStyle(xl, medium, xl, lg);
+  color: $black-33;
+  text-align: center;
+}
+
+.butten-wrapper {
+  width: 100%;
+  @include Flex(row, null, center);
+  @include ResponsiveGap(8, 8, 7);
+
+  & > button {
+    width: 100%;
+    height: 54px;
+    border-radius: 8px;
+    @include FontStyle(lg, semibold);
+  }
+}
+
+@include mobile {
+  .line {
+    display: block;
+  }
+}
