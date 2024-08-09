@@ -1,29 +1,28 @@
 import Image from 'next/image';
 import { User } from '@/types/User.interface';
 import styles from './ProfileIcon.module.scss';
+import getBackgroundColor from '@/utils/getBackgroundColor';
 
 interface ProfileIconProps {
   user: User;
-  imgClassName: string;
-  fontClassName: string;
 }
 
-export function ProfileIcon({
-  user,
-  imgClassName,
-  fontClassName,
-}: ProfileIconProps) {
+export function ProfileIcon({ user }: ProfileIconProps) {
+  const backColor = getBackgroundColor(user.nickname);
   return (
-    <div className={styles.profileImg}>
+    <div
+      style={{ backgroundColor: backColor }}
+      className={styles['profile-img']}
+    >
       {user.profileImageUrl ? (
         <Image
           src={user.profileImageUrl}
           alt='프로필'
           fill
-          className={styles.image}
+          className={styles['image']}
         />
       ) : (
-        <p className={styles.substring}>{user.nickname.substring(0, 1)}</p>
+        <p className={styles['substring']}>{user.nickname.substring(0, 1)}</p>
       )}
     </div>
   );

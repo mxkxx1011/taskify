@@ -1,22 +1,25 @@
 @use '@/styles/index' as *;
 
-.profileImg {
-  position: relative;
+.profile-img {
+  @include ResponsiveWidth(34px, 34px, 26px);
+  @include ResponsiveHeight(34px, 34px, 26px);
+
+  padding: 7px 12px;
+
   border-radius: 9999px;
-  border-width: 2px;
-  border-style: solid;
-  border-color: $white;
-  background-color: $gray-9f;
+  border: 2px solid $white;
+
+  @include Flex(row, center, center);
+
+  // background-color: $gray-9f;
   .image {
     object-fit: cover;
     border-radius: 9999px;
   }
   .substring {
-    position: absolute;
-    left: 11px;
-    top: 6px;
-    font: optional;
-    font-weight: 600;
+    @include FontStyle(16, 600, 16, 12);
+    @include ResponsiveLineHeight(20, 20, 14.6);
+
     color: $white;
   }
 }
