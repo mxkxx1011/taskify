@@ -4,7 +4,7 @@ import { IconAddChip } from '@/assets/icongroup';
 function ChipAdd() {
   return (
     <p className={styles['add']}>
-      <IconAddChip />
+      <IconAddChip className={styles['add-icon']} />
     </p>
   );
 }
