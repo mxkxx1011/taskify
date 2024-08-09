@@ -1,0 +1,98 @@
+@use '@/styles/index.scss' as *;
+@import '@/styles/levels';
+@import '@/styles/animations';
+
+.toast {
+  box-sizing: border-box; // 적용이 안되길래 따로 추가!
+  background-color: $white-fe;
+  box-shadow: 0 1px 3px rgba($black, 0.12), 0 1px 2px rgba($black, 0.24);
+
+  position: relative;
+  @include ResponsivePadding(29px, 29px, 24px);
+
+  @include Size(100%, 70px);
+  max-width: 400px;
+
+  @include Flex(row, space-between, center);
+  @include border-radius(5px);
+
+  transition: opacity 0.5s ease, transform 0.5s ease;
+
+  &.visible {
+    animation: fade-in 0.5s ease;
+  }
+
+  &.non-visible {
+    animation: fade-out 0.5s ease forwards;
+  }
+
+  &.success {
+    .left-color,
+    .circle {
+      background-color: $success-color;
+    }
+  }
+  &.error {
+    .left-color,
+    .circle {
+      background-color: $error-color;
+    }
+  }
+}
+
+.toast-wrapper {
+  height: 100%;
+  @include Flex(row, null, center);
+  @include ResponsiveGap(17, 15, 12);
+}
+
+.left-color {
+  @include border-radius(5px 0 0 5px);
+  @include Size(10px, 100%);
+
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.circle {
+  @include Size(20px);
+  @include border-radius(50%);
+  @include Flex(row, center, center);
+  svg {
+    fill: $white;
+  }
+}
+
+.title {
+  @include FontStyle(2lg, bold, lg, md);
+}
+
+.description {
+  @include FontStyle(md, regular, md, sm);
+}
+
+.toast-list-wrapper {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  z-index: $toast-index;
+  @include Flex(column, null, flex-end);
+  @include ResponsiveGap(12, 12, 10);
+
+  width: 50%;
+  overflow: hidden;
+  padding: 10px;
+
+  @include mobile {
+    top: auto;
+    bottom: 0;
+    left: 50%;
+    transform: (translateX(-50%));
+  }
+}
+
+.icon-close {
+  fill: $black;
+  cursor: pointer;
+}
