@@ -1,6 +1,3 @@
-import { useQuery } from '@tanstack/react-query';
-import axios from '@/services/axios';
-
 import { IconCircleChip, IconSetting } from '@/assets/icongroup';
 import ChipNum from '@/containers/dashboard/id/chips/ChipNum';
 import Button from '@/components/Button';
@@ -14,17 +11,41 @@ import {
 import styles from './Column.module.scss';
 import EmptyColumn from './EmptyColumn';
 import { Droppable } from 'react-beautiful-dnd';
-import useCardList from '@/hooks/useCardList';
+
 import classNames from 'classnames';
+import { useInView } from 'react-intersection-observer';
+import { useEffect } from 'react';
+import useInfiniteScroll from '@/hooks/useInfiniteScroll';
+import useToast from '@/hooks/useToast';
 
 function Column({ id, title }: { id: number; title: string }) {
-  const { cardList, isLoading, error } = useCardList(id);
+  const { toast } = useToast();
+
+  const {
+    data: cardList,
+    totalCount,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+    isLoading,
+    error,
+  } = useInfiniteScroll('card', ['getCardList', id]);
+
+  const { ref, inView } = useInView();
 
   const { ManageModalId, setOpenManageModal } = useManageModalStore();
   const { setOpenModal } = useTodoCreateModalStore();
 
+  useEffect(() => {
+    if (inView && hasNextPage) {
+      fetchNextPage();
+    }
+  }, [inView, hasNextPage, fetchNextPage]);
+
+  // TODO: 로딩 처리하기
   if (isLoading) return <h2>loading</h2>;
-  if (error) return <h2>error</h2>;
+  if (error) return toast('error', error.message);
+  if (!cardList) return <></>;
 
   return (
     <Droppable droppableId={String(id)}>
@@ -40,7 +61,7 @@ function Column({ id, title }: { id: number; title: string }) {
               <IconCircleChip />
               <div className={styles['title']}>
                 <p className={styles['column-title']}>{title}</p>{' '}
-                <ChipNum num={cardList.length} />
+                <ChipNum num={totalCount} />
               </div>
             </div>
             <IconSetting
@@ -62,6 +83,11 @@ function Column({ id, title }: { id: number; title: string }) {
               cardList.map((card: ICard) => <Card card={card} key={card.id} />)
             )}
             {provided.placeholder}
+            {hasNextPage && (
+              <div ref={ref} className={styles['view']}>
+                .
+              </div>
+            )}
           </div>
         </div>
       )}
