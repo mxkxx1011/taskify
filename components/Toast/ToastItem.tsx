@@ -4,7 +4,7 @@ import { IconClose } from '@/assets/icongroup';
 import { ReactNode, useEffect, useState } from 'react';
 import useToastStore from '@/stores/toastStore';
 
-const DURATION = 100000;
+const DURATION = 4000;
 const ANIMATION = 500;
 
 function ToastItem({ toast }: { toast: IToast }) {
