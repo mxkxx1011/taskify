@@ -61,6 +61,7 @@ export const useSignIn = () => {
         createdAt: data.user.createdAt || '',
         updatedAt: data.user.updatedAt || '',
       };
+      document.cookie = `token=${data.accessToken}`;
       setUser(user, data.accessToken);
       setLoading(false);
     },
