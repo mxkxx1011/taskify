@@ -11,16 +11,20 @@ import {
   useManageModalStore,
   useTodoCreateModalStore,
 } from '@/stores/modalStore';
+
 import styles from './Column.module.scss';
 import EmptyColumn from './EmptyColumn';
 import { Droppable } from 'react-beautiful-dnd';
 import useCardList from '@/hooks/useCardList';
 import classNames from 'classnames';
+import DeleteAlertModal from '../modals/deleteAlertModal';
+import useDeleteAlertModalStore from '@/stores/useDeleteAlertModalStore';
 
 function Column({ id, title }: { id: number; title: string }) {
   const { cardList, isLoading, error } = useCardList(id);
 
   const { ManageModalId, setOpenManageModal } = useManageModalStore();
+  const { AlertModalId } = useDeleteAlertModalStore();
   const { setOpenModal } = useTodoCreateModalStore();
 
   if (isLoading) return <h2>loading</h2>;
@@ -48,6 +52,7 @@ function Column({ id, title }: { id: number; title: string }) {
               onClick={() => setOpenManageModal(id)}
             />
             {ManageModalId === id && <ManageModal defaultValue={title} />}
+            {AlertModalId === id && <DeleteAlertModal columnId={id} />}
           </div>
 
           <div

@@ -4,12 +4,12 @@ const deleteColumn = async (columnId: number) => {
   try {
     await axios.delete(`/columns/${columnId}`);
   } catch (e: any) {
-    // TODO: 에러나면 메시지 접근해서 톻스트 띄우게 수정하기
-    console.error('error message');
-    console.error(e.response.data.message);
+    throw new Error(e.response.data.message);
+    // 에러 발생시켜서 컴포넌트에서 에러 캐치하도록
   }
 };
 
+// 아래는 나중에 수정..
 const getColumnList = async (dashboardId: string | string[] | null) => {
   const data = await axios
     .get(`/columns?dashboardId=${dashboardId}`)
