@@ -7,6 +7,7 @@ import { useForm } from 'react-hook-form';
 import styles from './index.module.scss';
 import { useEffect } from 'react';
 import { IconKebab } from '@/assets/icongroup';
+import { useUserStore } from '@/store/useUserStore';
 
 function Comment({ comment }: { comment: IComment }) {
   const {
@@ -17,9 +18,11 @@ function Comment({ comment }: { comment: IComment }) {
     cardId,
     author,
   } = comment;
+
+  const { id: authorId, nickname, profileImageUrl } = author;
+  const { user } = useUserStore();
   const queryClient = useQueryClient();
 
-  const { id, nickname, profileImageUrl } = author;
   const { CommentId, setOpenEditComment, setCloseEditComment } =
     useEditCommentStore();
 
@@ -65,6 +68,8 @@ function Comment({ comment }: { comment: IComment }) {
     return () => setCloseEditComment();
   }, []);
 
+  if (!user) return <></>;
+
   return (
     <>
       <div className={styles['comment-card']}>
@@ -84,8 +89,6 @@ function Comment({ comment }: { comment: IComment }) {
             {createdAt !== updatedAt && (
               <p className={styles['date']}>(수정됨)</p>
             )}
-            <IconKebab width={18} height={18} />
-            {/* kebab 드롭다운으로 변경하기 */}
           </div>
           {CommentId === commentId ? (
             <form
@@ -107,7 +110,7 @@ function Comment({ comment }: { comment: IComment }) {
           ) : (
             <p className={styles['comment-text']}>{content}</p>
           )}
-          {!(CommentId === commentId) && (
+          {user.id === authorId && !(CommentId === commentId) && (
             <div className={styles['edit-and-delete']}>
               <button
                 className={styles['button']}
