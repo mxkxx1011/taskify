@@ -1,6 +1,7 @@
 import ModalPortal from '@/components/ModalPortal';
 import SmallModal from '@/components/SmallModal';
 import { useManageModalStore } from '@/stores/modalStore';
+import useDeleteAlertModalStore from '@/stores/useDeleteAlertModalStore';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import axios from '@/services/axios';
 import { useRouter } from 'next/router';
@@ -11,6 +12,7 @@ function ManageModal({ defaultValue }: { defaultValue: string }) {
 
   const router = useRouter();
   const { id: dashboardId } = router.query;
+  const { setOpenAlertModal } = useDeleteAlertModalStore();
 
   // 컬럼 이름 변경하는 mutate 함수
   const updateColumnMutation = useMutation({
@@ -25,19 +27,9 @@ function ManageModal({ defaultValue }: { defaultValue: string }) {
     },
   });
 
-  // 컬럼 삭제하는 mutate 함수
-  const deleteColumnMutation = useMutation({
-    mutationFn: () => axios.delete(`/columns/${ManageModalId}`),
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: ['getColumnList', dashboardId],
-      });
-      setCloseManageModal();
-    },
-  });
-
   const handleDeleteBtnClick = () => {
-    deleteColumnMutation.mutate();
+    setCloseManageModal();
+    setOpenAlertModal(ManageModalId);
   };
 
   const handleChangeBtnClick = (data: { title: string }) => {

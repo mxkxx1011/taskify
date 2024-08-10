@@ -9,13 +9,15 @@ import styles from './Column.module.scss';
 import EmptyColumn from './EmptyColumn';
 import { Droppable } from 'react-beautiful-dnd';
 
-import classNames from 'classnames';
+import classNames from 'classNames';
 import { useInView } from 'react-intersection-observer';
 import { useEffect } from 'react';
 import useInfiniteScroll from '@/hooks/useInfiniteScroll';
 import useToast from '@/hooks/useToast';
 import TodoCreateModal from '../modals/todoCreateModal/TodoCreateModal';
 import useTodoCreateModalStore from '@/stores/TodoCreateModalStore';
+import DeleteAlertModal from '../modals/deleteAlertModal';
+import useDeleteAlertModalStore from '@/stores/useDeleteAlertModalStore';
 
 function Column({ id, title }: { id: number; title: string }) {
   const { toast } = useToast();
@@ -32,6 +34,7 @@ function Column({ id, title }: { id: number; title: string }) {
 
   const { ref, inView } = useInView();
 
+  const { AlertModalId } = useDeleteAlertModalStore();
   const { ManageModalId, setOpenManageModal } = useManageModalStore();
   const { TodoCreateModalId, setOpenTodoCreateModal } =
     useTodoCreateModalStore();
@@ -44,7 +47,6 @@ function Column({ id, title }: { id: number; title: string }) {
 
   // TODO: 로딩 처리하기
   if (isLoading) return <h2>loading</h2>;
-  // if (error) return toast('error', error.message);
   if (!cardList) return <></>;
 
   return (
@@ -69,6 +71,7 @@ function Column({ id, title }: { id: number; title: string }) {
               onClick={() => setOpenManageModal(id)}
             />
             {ManageModalId === id && <ManageModal defaultValue={title} />}
+            {AlertModalId === id && <DeleteAlertModal columnId={id} />}
           </div>
 
           <div

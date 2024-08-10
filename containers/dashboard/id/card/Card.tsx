@@ -9,7 +9,7 @@ import useTodoModalStore from '@/stores/todoModalStore';
 import useTodoEditModalStore from '@/stores/useTodoEditModalStore';
 import TodoEditModal from '../modals/todoEditModal/TodoEditModal';
 import { Draggable } from 'react-beautiful-dnd';
-import classNames from 'classnames';
+import classNames from 'classNames';
 import getRandomTagColor from '@/utils/getRandomTagColor';
 
 function Card({ card }: { card: ICard }) {

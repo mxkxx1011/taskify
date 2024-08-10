@@ -4,9 +4,7 @@ const deleteColumn = async (columnId: number) => {
   try {
     await axios.delete(`/columns/${columnId}`);
   } catch (e: any) {
-    // TODO: 에러나면 메시지 접근해서 톻스트 띄우게 수정하기
-    console.error('error message');
-    console.error(e.response.data.message);
+    throw new Error(e.response.data.message);
   }
 };
 

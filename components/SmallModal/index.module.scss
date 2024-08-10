@@ -56,20 +56,5 @@
     @include Size(100%, 54px);
 
     @include FontStyle(lg, semibold);
-
-    &:hover {
-      cursor: pointer;
-    }
-  }
-
-  .left-btn {
-    color: $gray-78;
-    background-color: $white;
-    border: 1px solid $gray-d9;
-  }
-
-  .right-btn {
-    color: $white;
-    background-color: $violet;
   }
 }
