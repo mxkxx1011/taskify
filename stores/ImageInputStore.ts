@@ -2,7 +2,7 @@ import { create } from 'zustand';
 
 interface ImageState {
   imageUrl: string | null;
-  setImage: (url: string | null) => void;
+  setImage: (url: string) => void;
   clearImage: () => void;
 }
 
