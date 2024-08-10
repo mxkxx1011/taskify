@@ -4,10 +4,7 @@ import Button from '@/components/Button';
 import Card from '@/containers/dashboard/id/card/Card';
 import ManageModal from '@/containers/dashboard/id/modals/ManageModal';
 
-import {
-  useManageModalStore,
-  useTodoCreateModalStore,
-} from '@/stores/modalStore';
+import { useManageModalStore } from '@/stores/modalStore';
 import styles from './Column.module.scss';
 import EmptyColumn from './EmptyColumn';
 import { Droppable } from 'react-beautiful-dnd';
@@ -17,6 +14,8 @@ import { useInView } from 'react-intersection-observer';
 import { useEffect } from 'react';
 import useInfiniteScroll from '@/hooks/useInfiniteScroll';
 import useToast from '@/hooks/useToast';
+import TodoCreateModal from '../modals/todoCreateModal/TodoCreateModal';
+import useTodoCreateModalStore from '@/stores/TodoCreateModalStore';
 
 function Column({ id, title }: { id: number; title: string }) {
   const { toast } = useToast();
@@ -34,7 +33,8 @@ function Column({ id, title }: { id: number; title: string }) {
   const { ref, inView } = useInView();
 
   const { ManageModalId, setOpenManageModal } = useManageModalStore();
-  const { setOpenModal } = useTodoCreateModalStore();
+  const { TodoCreateModalId, setOpenTodoCreateModal } =
+    useTodoCreateModalStore();
 
   useEffect(() => {
     if (inView && hasNextPage) {
@@ -44,7 +44,7 @@ function Column({ id, title }: { id: number; title: string }) {
 
   // TODO: 로딩 처리하기
   if (isLoading) return <h2>loading</h2>;
-  if (error) return toast('error', error.message);
+  // if (error) return toast('error', error.message);
   if (!cardList) return <></>;
 
   return (
@@ -76,7 +76,12 @@ function Column({ id, title }: { id: number; title: string }) {
             ref={provided.innerRef}
             {...provided.droppableProps}
           >
-            <Button buttonType='add-todo' onClick={setOpenModal} />
+            <Button
+              buttonType='add-todo'
+              onClick={() => setOpenTodoCreateModal(id)}
+            />
+            {TodoCreateModalId == id && <TodoCreateModal columnId={id} />}
+
             {cardList.length === 0 ? (
               <EmptyColumn />
             ) : (

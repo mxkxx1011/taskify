@@ -8,28 +8,24 @@ import ModalPortal from '@/components/ModalPortal';
 import styles from './TodoCreateModal.module.scss';
 import ImageInput from '@/components/Input/ImageInput';
 import { useState } from 'react';
+import useToast from '@/hooks/useToast';
 
-// FormValues 인터페이스 정의
-// interface FormValues {
-//   title: string;
-//   description: string;
-//   dueDate?: string;
-//   tags?: string;
-//   imageUrl?: string | null;
-//   assigneeUserId?: number | null;
-//   columnId?: number;
-// }
+import getDate from '@/utils/getDate';
+import useTodoCreateModalStore from '@/stores/TodoCreateModalStore';
 
-export default function TodoCreateModal({ onClose }: { onClose: () => void }) {
+export default function TodoCreateModal({ columnId }: { columnId: number }) {
+  const { toast } = useToast();
   const { register, handleSubmit, reset } = useForm<FormValues>();
   const queryClient = useQueryClient();
   const router = useRouter();
-  const { id: dashboardId } = router.query as { id: string };
+  const { id: dashboardId } = router.query;
   const { columnList } = useColumnList(dashboardId);
 
-  const [selectedAssigneeValue, setSelectedAssigneeValue] = useState<
-    IAssignee | IMember | null
-  >(null);
+  const { TodoCreateModalId, setCloseTodoCreateModal } =
+    useTodoCreateModalStore();
+
+  const [selectedAssigneeValue, setSelectedAssigneeValue] =
+    useState<IMember | null>(null);
 
   const [imageUrl, setImageUrl] = useState<string | null>(null);
 
@@ -38,42 +34,64 @@ export default function TodoCreateModal({ onClose }: { onClose: () => void }) {
       return axios.post(`/cards`, formData);
     },
     onSuccess: () => {
-      queryClient.invalidateQueries(['getColumnList', dashboardId]);
+      queryClient.invalidateQueries({
+        queryKey: ['getColumnList', dashboardId],
+      });
+      queryClient.invalidateQueries({
+        queryKey: ['getCardList', columnId],
+      });
+
+      toast('success', '데이터 넣기 성공');
       reset(); // 폼 초기화
-      onClose(); // 모달 닫기
+      setCloseTodoCreateModal();
     },
     onError: (error) => {
       console.error('Create Error:', error);
+      toast('error', error.message);
     },
   });
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
+    const { title, description, tags, dueDate } = data;
+    console.log('selectedAssigneeValue');
+    console.log(selectedAssigneeValue);
+
     // 선택된 담당자의 ID 추가
-    const assigneeUserId = selectedAssigneeValue?.id ?? null;
+    const assigneeUserId =
+      selectedAssigneeValue?.userId ?? selectedAssigneeValue?.id;
 
     // 전송할 데이터 생성
     const requestData: FormValues = {
-      ...data,
       assigneeUserId,
-      imageUrl, // 이미지 URL 포함
-      dashboardId,
-      columnId: columnList?.[0]?.id ?? null, // 필요한 경우 columnId 추가
+      dashboardId: Number(dashboardId),
+      columnId: columnId, // 필요한 경우 columnId 추가
+      title,
+      description,
+      tags: tags.length === 0 ? [] : tags,
     };
+
+    if (dueDate) {
+      requestData.dueDate = getDate(dueDate, true);
+    }
+    if (imageUrl) {
+      requestData.imageUrl = imageUrl;
+    }
 
     console.log('Form Data:', requestData); // 디버깅을 위한 콘솔 출력
 
     postTodoMutation.mutate(requestData); // 폼 데이터 전송
   };
 
+  if (TodoCreateModalId !== columnId) return <></>;
   return (
-    <ModalPortal onClose={onClose}>
+    <ModalPortal onClose={setCloseTodoCreateModal}>
       <div className={styles['container']}>
         <form
           className={styles['form']}
           onSubmit={handleSubmit(onSubmit)}
           onReset={() => {
             reset(); // 폼 리셋
-            onClose(); // 모달 닫기
+            setCloseTodoCreateModal();
           }}
         >
           <p className={styles['modal-title']}>할 일 생성</p>

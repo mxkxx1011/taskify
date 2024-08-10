@@ -23,6 +23,9 @@ function SelectAssigneeDropdown({
     Number(dashboardId),
   );
 
+  console.log('dashboardMemberList');
+  console.log(dashboardMemberList);
+
   // assignee가 있으면 수정 모달에서 사용할 것
 
   const dropdownRef = useRef<HTMLDivElement>(null);

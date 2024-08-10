@@ -5,6 +5,6 @@ interface FormValues {
   title: string;
   description: string;
   dueDate?: string;
-  tags?: string;
+  tags?: string[];
   imageUrl?: string | null;
 }
