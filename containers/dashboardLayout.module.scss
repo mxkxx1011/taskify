@@ -1,7 +1,7 @@
 @use '@/styles/index.scss' as *;
 
 .main {
-  &:last-child {
+  > :last-child {
     margin-top: 70px;
     margin-left: 300px;
 
