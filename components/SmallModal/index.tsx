@@ -40,10 +40,18 @@ function SmallModal({
           />
         </div>
         <div className={styles['button-wrapper']}>
-          <button className={styles['left-btn']} onClick={handleLeftBtnClick}>
+          <button
+            type='button'
+            className={styles['left-btn']}
+            onClick={handleLeftBtnClick}
+          >
             {modalValues[type].leftBtn}
           </button>
-          <button className={styles['right-btn']} onClick={handleRightBtnClick}>
+          <button
+            type='button'
+            className={styles['right-btn']}
+            onClick={handleRightBtnClick}
+          >
             {modalValues[type].rightBtn}
           </button>
         </div>
