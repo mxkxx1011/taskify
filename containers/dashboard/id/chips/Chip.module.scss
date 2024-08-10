@@ -63,6 +63,22 @@
   }
 }
 
+.violet {
+  @include GetProgressChipColor('violet');
+
+  svg {
+    @include GetCircleColor('violet');
+  }
+}
+
+.yellow {
+  @include GetProgressChipColor('yellow');
+
+  svg {
+    @include GetCircleColor('yellow');
+  }
+}
+
 // 색상들은 컴포넌트들 색상에 맞게 믹스인을 사용하도록 설정함
 .pink {
   @include GetProgressChipColor('pink');

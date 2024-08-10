@@ -10,6 +10,7 @@ import useTodoEditModalStore from '@/stores/useTodoEditModalStore';
 import TodoEditModal from '../modals/todoEditModal/TodoEditModal';
 import { Draggable } from 'react-beautiful-dnd';
 import classNames from 'classnames';
+import getRandomTagColor from '@/utils/getRandomTagColor';
 
 function Card({ card }: { card: ICard }) {
   const { id, title, tags, dueDate, imageUrl } = card;
@@ -45,7 +46,11 @@ function Card({ card }: { card: ICard }) {
               <div className={styles['card-information']}>
                 <div className={styles['tags']}>
                   {tags.map((tag, idx) => (
-                    <ChipCard content={tag} color='orange' key={idx} />
+                    <ChipCard
+                      content={tag}
+                      color={getRandomTagColor(tag, id)}
+                      key={idx}
+                    />
                   ))}
                 </div>
 
