@@ -44,16 +44,19 @@ function Card({ card }: { card: ICard }) {
             <div className={styles['card-content']}>
               <p className={styles['title']}>{title}</p>
               <div className={styles['card-information']}>
-                <div className={styles['tags']}>
-                  {tags.map((tag, idx) => (
-                    <ChipCard
-                      content={tag}
-                      color={getRandomTagColor(tag, id)}
-                      key={idx}
-                    />
-                  ))}
-                </div>
-
+                <>
+                  {tags.length > 0 && (
+                    <div className={styles['tags']}>
+                      {tags.map((tag, idx) => (
+                        <ChipCard
+                          content={tag}
+                          color={getRandomTagColor(tag, id)}
+                          key={idx}
+                        />
+                      ))}
+                    </div>
+                  )}
+                </>
                 <div className={styles['card-bottom']}>
                   <div className={styles['date']}>
                     <IconCalender width={18} height={18} />
