@@ -3,7 +3,8 @@
 //임시
 @mixin ButtonStyle {
   width: fit-content;
-  padding: 9px 31px;
+  @include ResponsivePadding(9px 31px, 9px 30px, 8px 25px);
+  // padding: 9px 31px;
 
   border-radius: 4px;
   outline: 1px solid $gray-d9;
@@ -14,6 +15,13 @@
   border: none;
 
   &:hover {
-    background-color: $gray-d9;
+    // background-color: $gray-d9;
+    outline: none;
+    background-color: $main-yellow;
+    color: $white;
+  }
+
+  &:active {
+    background-color: $main-yellow-active;
   }
 }

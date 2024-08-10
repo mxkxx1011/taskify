@@ -2,12 +2,11 @@ import useEditCommentStore from '@/stores/EditCommentStore';
 import getDate from '@/utils/getDate';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import axios from '@/services/axios';
-import Image from 'next/image';
 import { useForm } from 'react-hook-form';
 import styles from './index.module.scss';
 import { useEffect } from 'react';
-import { IconKebab } from '@/assets/icongroup';
 import { useUserStore } from '@/store/useUserStore';
+import { ProfileIcon } from '@/components/ProfileIcon/ProfileIcon';
 
 function Comment({ comment }: { comment: IComment }) {
   const {
@@ -73,21 +72,33 @@ function Comment({ comment }: { comment: IComment }) {
   return (
     <>
       <div className={styles['comment-card']}>
-        {profileImageUrl ? (
-          <Image
-            className={styles['profile-img']}
-            src={profileImageUrl}
-            alt='프로필이미지'
-          />
-        ) : (
-          <div className={styles['profile-img']}></div>
-        )}
+        <ProfileIcon nickname={nickname} imageUrl={profileImageUrl} />
+
         <div className={styles['comment-contents']}>
-          <div className={styles['writer-and-date']}>
-            <p className={styles['writer']}>{nickname}</p>
-            <p className={styles['date']}>{getDate(createdAt, true)}</p>
-            {createdAt !== updatedAt && (
-              <p className={styles['date']}>(수정됨)</p>
+          <div className={styles['comment-header']}>
+            <div className={styles['writer-and-date']}>
+              <p className={styles['writer']}>{nickname}</p>
+              <p className={styles['date']}>{getDate(createdAt, true)}</p>
+              {createdAt !== updatedAt && (
+                <p className={styles['date']}>(수정됨)</p>
+              )}
+            </div>
+            {user.id === authorId && !(CommentId === commentId) && (
+              <div className={styles['edit-and-delete']}>
+                <button
+                  className={styles['button']}
+                  onClick={() => setOpenEditComment(commentId)}
+                >
+                  수정
+                </button>
+                <div className={styles['border']} />
+                <button
+                  className={styles['button']}
+                  onClick={handleDeleteComment}
+                >
+                  삭제
+                </button>
+              </div>
             )}
           </div>
           {CommentId === commentId ? (
@@ -109,22 +120,6 @@ function Comment({ comment }: { comment: IComment }) {
             </form>
           ) : (
             <p className={styles['comment-text']}>{content}</p>
-          )}
-          {user.id === authorId && !(CommentId === commentId) && (
-            <div className={styles['edit-and-delete']}>
-              <button
-                className={styles['button']}
-                onClick={() => setOpenEditComment(commentId)}
-              >
-                수정
-              </button>
-              <button
-                className={styles['button']}
-                onClick={handleDeleteComment}
-              >
-                삭제
-              </button>
-            </div>
           )}
         </div>
       </div>

@@ -6,7 +6,11 @@
   gap: 10px;
   width: 100%;
   border-bottom: 1px solid $gray-d9;
-  padding: 12px 0;
+  padding: 15px 2px;
+
+  &:last-child {
+    border: none;
+  }
 
   .profile-img {
     @include Size(34px);
@@ -16,7 +20,7 @@
 
   .comment-contents {
     @include Flex(column, null, null);
-    gap: 12px;
+    @include ResponsiveGap(12, 12, 16);
     width: 100%;
 
     .writer-and-date {
@@ -32,22 +36,19 @@
     }
 
     .writer {
-      font-weight: 600;
-      font-size: 14px;
-      line-height: 16px;
+      @include FontStyle(14, 600, 14, 12);
+      @include ResponsiveLineHeight(16, 16, 14);
     }
 
     .date {
-      font-size: 12px;
-      font-weight: 400;
+      @include FontStyle(12, regular, 12, 10);
       line-height: 14px;
       color: $gray-9f;
     }
 
     .comment-text {
-      font-weight: 400;
-      font-size: 14px;
-      line-height: 16px;
+      @include FontStyle(14, regular, 14, 12);
+      @include ResponsiveLineHeight(16, 16, 18);
       color: $black-33;
 
       &.edit-comment {
@@ -78,40 +79,27 @@
     }
 
     .edit-and-delete {
-      @include Flex(row, null, null);
-      gap: 12px;
-      margin-top: 3px;
+      margin-right: 3px;
+      @include Flex(row, null, center);
+      gap: 8px;
 
       .button {
-        text-decoration: underline;
         background-color: transparent;
         padding: 0;
-        font-size: 12px;
-        font-weight: 400;
-        line-height: 15px;
+        @include FontStyle(12, regular, 12, 10);
+        @include ResponsiveLineHeight(15, 12, 12);
         color: $gray-9f;
       }
     }
   }
 }
 
-@include mobile {
-  .comment-contents {
-    gap: 16px;
-  }
-  .writer {
-    font-size: 12px;
-    line-height: 14px;
-  }
-  .date {
-    font-size: 10px;
-  }
-  .comment-text {
-    font-size: 12px;
-    line-height: 18px;
-  }
-  .button {
-    font-size: 10px;
-    line-height: 12px;
-  }
+.comment-header {
+  @include Flex(row, space-between, null);
+}
+
+.border {
+  width: 1px;
+  height: 80%;
+  background-color: $gray-d9;
 }

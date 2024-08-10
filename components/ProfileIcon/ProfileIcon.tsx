@@ -4,25 +4,21 @@ import styles from './ProfileIcon.module.scss';
 import getBackgroundColor from '@/utils/getBackgroundColor';
 
 interface ProfileIconProps {
-  user: User;
+  nickname: string;
+  imageUrl: string | null;
 }
 
-export function ProfileIcon({ user }: ProfileIconProps) {
-  const backColor = getBackgroundColor(user.nickname);
+export function ProfileIcon({ nickname, imageUrl }: ProfileIconProps) {
+  const backColor = getBackgroundColor(nickname);
   return (
     <div
       style={{ backgroundColor: backColor }}
       className={styles['profile-img']}
     >
-      {user.profileImageUrl ? (
-        <Image
-          src={user.profileImageUrl}
-          alt='프로필'
-          fill
-          className={styles['image']}
-        />
+      {imageUrl ? (
+        <Image src={imageUrl} alt='프로필' fill className={styles['image']} />
       ) : (
-        <p className={styles['substring']}>{user.nickname.substring(0, 1)}</p>
+        <p className={styles['substring']}>{nickname.substring(0, 1)}</p>
       )}
     </div>
   );

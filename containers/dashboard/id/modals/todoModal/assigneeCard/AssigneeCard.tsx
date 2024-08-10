@@ -2,6 +2,7 @@ import styles from './assigneeCard.module.scss';
 import Image from 'next/image';
 import profileImg from '@/assets/images/img_profileImg2.png';
 import getDate from '@/utils/getDate';
+import { ProfileIcon } from '@/components/ProfileIcon/ProfileIcon';
 
 export default function AssigneeCard({
   assignee,
@@ -16,19 +17,7 @@ export default function AssigneeCard({
       <div className={styles['title-and-contents']}>
         <p className={styles['title']}>담당자</p>
         <div className={styles['assignee']}>
-          {profileImageUrl ? (
-            <Image
-              className={styles['profileImg']}
-              src={profileImageUrl}
-              alt='프로필 이미지'
-            />
-          ) : (
-            <Image
-              className={styles['profileImg']}
-              src={profileImg}
-              alt='프로필 이미지'
-            />
-          )}
+          <ProfileIcon nickname={nickname} imageUrl={profileImageUrl} />
           <p className={styles['contents']}>{nickname}</p>
         </div>
       </div>
