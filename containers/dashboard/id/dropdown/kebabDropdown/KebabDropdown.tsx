@@ -1,6 +1,6 @@
 import useTodoEditModalStore from '@/stores/useTodoEditModalStore';
 import Dropdown from '../Dropdown';
-import styles from './KebabDropdown.module.scss';
+import styles from './kebab.module.scss';
 import useTodoModalStore from '@/stores/todoModalStore';
 import useDetectClose from '@/hooks/useDetectClose';
 import { useRef } from 'react';
