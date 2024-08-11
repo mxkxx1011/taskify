@@ -9,7 +9,7 @@ import MemberList from './MemberList';
 import { useUserStore } from '@/store/useUserStore';
 import InviteModal from '@/containers/myDashboard/InviteModal';
 import { ProfileIcon } from '@/components/ProfileIcon/ProfileIcon';
-import { ProfileDropdown } from '@/components/ProfileDropdown';
+import ProfileDropdown from '@/components/ProfileDropdown';
 
 const fetchDashboards = async (dashboardId: string) => {
   const response = await instance.get(`/dashboards/${dashboardId}`);
