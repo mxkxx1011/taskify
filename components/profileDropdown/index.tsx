@@ -35,10 +35,7 @@ function ProfileDropdown({}) {
 
       <Dropdown visibility={isOpen}>
         <ul className={styles['container']}>
-          <li
-            className={styles['list']}
-            onClick={() => router.push('/mydashboard')}
-          >
+          <li className={styles['list']} onClick={() => router.push('/mypage')}>
             마이페이지
           </li>
           <li
