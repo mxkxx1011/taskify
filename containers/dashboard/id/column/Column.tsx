@@ -7,7 +7,7 @@ import ManageModal from '@/containers/dashboard/id/modals/ManageModal';
 import { useManageModalStore } from '@/stores/modalStore';
 import styles from './Column.module.scss';
 import EmptyColumn from './EmptyColumn';
-import { Droppable } from 'react-beautiful-dnd';
+import { Droppable } from '@hello-pangea/dnd';
 
 import classNames from 'classNames';
 import { useInView } from 'react-intersection-observer';

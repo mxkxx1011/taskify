@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 
 import styles from './index.module.scss';
 import CreateModal from './modals/CreateModal';
-import { DragDropContext } from 'react-beautiful-dnd';
+import { DragDropContext } from '@hello-pangea/dnd';
 import { useQueryClient } from '@tanstack/react-query';
 import { onDragEnd, onDragStart } from '@/services/dragService';
 import useTodoCreateModalStore from '@/stores/TodoCreateModalStore';
