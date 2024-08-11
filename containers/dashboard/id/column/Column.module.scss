@@ -1,5 +1,6 @@
 @use '@/styles/index.scss' as *;
 @import '@/styles/mixins/mixinChip';
+@import '@/styles/animations';
 
 .column {
   width: 355px;
@@ -60,8 +61,11 @@
 }
 
 .setting-icon {
+  transition: transform 0.3s ease;
   &:hover {
     cursor: pointer;
+    animation: rotateClockwise 0.5s ease;
+    transform: rotate(90deg); // 호버가 끝난 후 최종 위치
   }
 }
 
