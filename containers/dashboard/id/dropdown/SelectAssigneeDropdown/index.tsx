@@ -23,9 +23,6 @@ function SelectAssigneeDropdown({
     Number(dashboardId),
   );
 
-  console.log('dashboardMemberList');
-  console.log(dashboardMemberList);
-
   // assignee가 있으면 수정 모달에서 사용할 것
 
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -53,6 +50,15 @@ function SelectAssigneeDropdown({
 
       <Dropdown visibility={isOpen}>
         <ul className={styles['menu']}>
+          <li
+            className={styles['list']}
+            onClick={() => {
+              setSelectedAssigneeValue(null);
+              setIsOpen(false);
+            }}
+          >
+            담당자 없음
+          </li>
           {dashboardMemberList.map((member: IMember) => {
             return (
               <li
