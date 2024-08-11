@@ -1,15 +1,17 @@
+import { useTheme } from '@/hooks/useThemeContext';
 import { useState } from 'react';
 import styles from './index.module.scss';
 
-function ModeSwitch() {
-  const [isChecked, setIsChecked] = useState(true);
+function ThemeSwitch() {
+  const { theme, toggleTheme } = useTheme();
+
   return (
     <label htmlFor='switch' className={styles['switch']}>
       <input
-        onClick={() => setIsChecked((prev) => !prev)}
+        onClick={toggleTheme}
         id='switch'
         type='checkbox'
-        checked={isChecked}
+        checked={theme === 'light'}
       />
       <span className={styles['slider']}></span>
       <span className={styles['decoration']}></span>
@@ -17,4 +19,4 @@ function ModeSwitch() {
   );
 }
 
-export default ModeSwitch;
+export default ThemeSwitch;
