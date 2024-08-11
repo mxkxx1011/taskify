@@ -8,7 +8,7 @@ import TodoModal from '../modals/todoModal/TodoModal';
 import useTodoModalStore from '@/stores/todoModalStore';
 import useTodoEditModalStore from '@/stores/useTodoEditModalStore';
 import TodoEditModal from '../modals/todoEditModal/TodoEditModal';
-import { Draggable } from 'react-beautiful-dnd';
+import { Draggable } from '@hello-pangea/dnd';
 import classNames from 'classNames';
 import getRandomTagColor from '@/utils/getRandomTagColor';
 

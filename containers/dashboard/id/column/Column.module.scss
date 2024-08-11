@@ -10,7 +10,7 @@
   @include ResponsiveGap(24, 24, 16);
 
   &.is-dragging-over {
-    border: 1.5px solid $main-yellow;
+    outline: 1.5px solid $main-yellow;
   }
 
   @include tablet {

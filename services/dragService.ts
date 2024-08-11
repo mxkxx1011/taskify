@@ -39,10 +39,10 @@ const onDragEnd = async (result: any, queryClient: any) => {
     );
 
     queryClient.invalidateQueries({
-      queryKey: ['getCardList', Number(source.droppableId)],
+      queryKey: ['getCardList', Number(destination.droppableId)],
     });
     queryClient.invalidateQueries({
-      queryKey: ['getCardList', Number(destination.droppableId)],
+      queryKey: ['getCardList', Number(source.droppableId)],
     });
   }
 };
