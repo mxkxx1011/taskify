@@ -9,6 +9,31 @@
   gap: 4px;
 }
 
+.kebab-dropdown {
+  position: relative;
+
+  & > svg {
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+  }
+
+  & > article {
+    position: absolute;
+    top: 28px;
+    right: 0;
+
+    ul {
+      background-color: $white;
+    }
+  }
+}
+
+.icon {
+  width: 28px;
+  height: 28px;
+}
+
 .list {
   width: 81px;
   height: 32px;
@@ -20,7 +45,7 @@
 
   &:hover {
     cursor: pointer;
-    background-color: $violet-8;
-    color: $violet;
+    background-color: $back-yellow;
+    color: $main-yellow;
   }
 }
