@@ -4,17 +4,17 @@
   @include ResponsiveWidth(38px, 38px, 34px);
   @include ResponsiveHeight(38px, 38px, 34px);
 
-  padding: 7px 12px;
+  border-radius: 70%;
 
-  border-radius: 9999px;
+  flex-shrink: 0;
   border: 2px solid $white;
 
   @include Flex(row, center, center);
+  position: relative;
 
-  // background-color: $gray-9f;
   .image {
-    object-fit: cover;
-    border-radius: 9999px;
+    border-radius: 70%;
+    overflow: hidden;
   }
   .substring {
     @include FontStyle(16, 600, 16, 14);
