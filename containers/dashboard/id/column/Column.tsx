@@ -86,7 +86,9 @@ function Column({ id, title }: { id: number; title: string }) {
             {TodoCreateModalId == id && <TodoCreateModal columnId={id} />}
 
             {cardList.length === 0 ? (
-              <EmptyColumn />
+              <div className={styles['column-empty']}>
+                <EmptyColumn />
+              </div>
             ) : (
               cardList.map((card: ICard) => <Card card={card} key={card.id} />)
             )}

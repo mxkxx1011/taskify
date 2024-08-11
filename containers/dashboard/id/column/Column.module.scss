@@ -3,7 +3,7 @@
 
 .column {
   width: 355px;
-  height: 1010px;
+  height: 92vh;
   border-right: 1px solid $gray-ee;
   padding: 20px;
   @include Flex(column, null, null);
@@ -53,7 +53,6 @@
   overscroll-behavior: none;
   @include Flex(column, null, null);
   @include ResponsiveGap(16, 16, 10);
-  margin-bottom: 50px;
 
   button > div {
     justify-content: center;
@@ -69,7 +68,7 @@
 .empty-column {
   margin-top: 30px;
   @include Flex(column, center, center);
-  opacity: 50%;
+  opacity: 35%;
 
   .big-logo {
     fill: $black-33;
@@ -89,4 +88,13 @@
   box-sizing: border-box;
   width: 100%;
   height: 2px;
+}
+
+.column-empty {
+  width: 100%;
+  height: 60vh;
+  @include Flex(row, center, center);
+  @include tablet {
+    height: 50vh;
+  }
 }
