@@ -34,7 +34,7 @@
   @include ListStyle;
   @include FontStyle(sm, regular);
   color: $black-33;
-  
+
   &:hover {
     background-color: #eeeeee;
   }
@@ -42,7 +42,34 @@
 
 .select-input {
   position: relative;
-  
+
+  &.dark {
+    .button {
+      background-color: $gray-d9;
+    }
+
+    .menu {
+      border-radius: 8px;
+      .list {
+        background-color: $gray-d9;
+        color: $dark-theme;
+
+        &:hover {
+          background-color: $dark-card-top;
+        }
+
+        &:first-child {
+          border-top-right-radius: 8px;
+          border-top-left-radius: 8px;
+        }
+        &:last-child {
+          border-bottom-right-radius: 8px;
+          border-bottom-left-radius: 8px;
+        }
+      }
+    }
+  }
+
   article {
     position: absolute;
     width: 100%;

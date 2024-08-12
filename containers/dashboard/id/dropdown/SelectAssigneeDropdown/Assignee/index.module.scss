@@ -3,6 +3,13 @@
 .assignee {
   @include Flex(row, null, center);
   gap: 6px;
+
+  &.dark {
+    > p {
+      // color: rgba($white, 0.87);
+      color: $dark-theme;
+    }
+  }
 }
 
 .profile-img {

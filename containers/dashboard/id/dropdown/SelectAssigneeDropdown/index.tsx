@@ -9,6 +9,7 @@ import useDetectClose from '@/hooks/useDetectClose';
 import useDashboardMember from '@/hooks/useDashboardMember';
 import Assignee from './Assignee';
 import { IconArrowDown } from '@/assets/icongroup';
+import { useTheme } from '@/hooks/useThemeContext';
 
 function SelectAssigneeDropdown({
   dashboardId,
@@ -23,6 +24,8 @@ function SelectAssigneeDropdown({
     Number(dashboardId),
   );
 
+  const { theme } = useTheme();
+
   // assignee가 있으면 수정 모달에서 사용할 것
 
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -35,7 +38,10 @@ function SelectAssigneeDropdown({
   if (isLoading) return <div className={styles['select-input']}></div>;
 
   return (
-    <div ref={dropdownRef} className={styles['select-input']}>
+    <div
+      ref={dropdownRef}
+      className={classNames(styles['select-input'], styles[theme])}
+    >
       <div
         className={classNames(styles['button'])}
         onClick={handleOpenDropdown}

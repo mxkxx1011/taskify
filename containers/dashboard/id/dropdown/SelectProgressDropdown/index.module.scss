@@ -38,6 +38,32 @@
 .select-input {
   position: relative;
 
+  &.dark {
+    .button {
+      background-color: $gray-d9;
+    }
+
+    .menu {
+      border-radius: 8px;
+      .list {
+        background-color: $gray-d9; // 이거 컬러에 맞게 수정하기 뭔가 밝은듯?
+
+        &:hover {
+          background-color: $dark-card-top;
+        }
+
+        &:first-child {
+          border-top-right-radius: 8px;
+          border-top-left-radius: 8px;
+        }
+        &:last-child {
+          border-bottom-right-radius: 8px;
+          border-bottom-left-radius: 8px;
+        }
+      }
+    }
+  }
+
   article {
     position: absolute;
     width: 100%;
