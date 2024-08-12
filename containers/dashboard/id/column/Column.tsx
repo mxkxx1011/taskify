@@ -48,9 +48,33 @@ function Column({ id, title }: { id: number; title: string }) {
     }
   }, [inView, hasNextPage, fetchNextPage]);
 
-  // TODO: 로딩 처리하기
-  if (isLoading) return <h2>loading</h2>;
-  if (!cardList) return <></>;
+  if (!cardList)
+    return (
+      <div
+        className={classNames(
+          styles['column'],
+
+          styles[theme],
+        )}
+      >
+        <div className={styles['header']}>
+          <div className={styles['header-left']}>
+            <IconCircleChip className={styles['circle-chip']} />
+            <div className={styles['title']}>
+              <p className={styles['column-title']}>{title}</p>{' '}
+              <ChipNum num={totalCount} />
+            </div>
+          </div>
+          <IconSetting className={styles['setting-icon']} />
+        </div>
+        <div className={styles['card-list']}>
+          <Button buttonType='add-todo' />
+          <div className={styles['column-empty']}>
+            <EmptyColumn />
+          </div>
+        </div>
+      </div>
+    );
 
   return (
     <Droppable droppableId={String(id)}>

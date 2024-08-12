@@ -34,3 +34,11 @@
     }
   }
 }
+
+// TODO: 위치 수정하기
+.loading {
+  height: 93vh;
+  width: 100%;
+
+  @include Flex(row, center, center);
+}

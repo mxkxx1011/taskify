@@ -15,6 +15,7 @@ function useColumnList(id: string | string[] | undefined) {
         .then((resData) => {
           return resData.data; // 배열만 저장하는 것
         }),
+    retry: 2,
   });
 
   return { columnList: columnList || [], isLoading, error };

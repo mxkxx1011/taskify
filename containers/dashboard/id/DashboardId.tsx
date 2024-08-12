@@ -12,9 +12,13 @@ import { onDragEnd } from '@/services/dragService';
 
 import DashboardLayout from '@/containers/dashboardLayout';
 import { useTheme } from '@/hooks/useThemeContext';
+import Spinner from '@/components/Spinner';
+import { useEffect } from 'react';
+import useToast from '@/hooks/useToast';
 
 function DashboardId() {
-  const { theme, toggleTheme } = useTheme();
+  const { theme } = useTheme();
+  const { toast } = useToast();
 
   const router = useRouter();
   const { id } = router.query;
@@ -23,9 +27,23 @@ function DashboardId() {
   const { isModalOpen, setOpenModal } = useCreateModalStore();
   const { columnList, isLoading, error } = useColumnList(id);
 
-  // 나중에 수정
-  if (isLoading) return <h2>...loading</h2>;
-  if (error) return <h2>error</h2>;
+  // 에러나면 다시 mydashboard로
+  useEffect(() => {
+    if (error) {
+      router.push('/mydashboard');
+      toast('error', '대시보드 로딩에 실패했습니다.');
+    }
+  }, [isLoading, error]);
+
+  // 로딩일 경우 스피너
+  if (isLoading)
+    return (
+      <DashboardLayout>
+        <div className={`${styles['loading']} ${styles[theme]}`}>
+          <Spinner />
+        </div>
+      </DashboardLayout>
+    );
 
   const handleDragEnd = (result: any) => {
     onDragEnd(result, queryClient);

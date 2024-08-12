@@ -18,6 +18,26 @@
 
   transition: opacity 0.5s ease, transform 0.5s ease;
 
+  @include mobile {
+    width: 100%;
+  }
+
+  &.dark {
+    background-color: $dark-card;
+
+    svg {
+      fill: rgba($white, 0.87);
+    }
+
+    .title {
+      color: rgba($white, 0.87);
+    }
+
+    .description {
+      color: rgba($white, 0.6);
+    }
+  }
+
   &.visible {
     animation: fade-in 0.5s ease;
   }
@@ -87,8 +107,9 @@
   @include mobile {
     top: auto;
     bottom: 0;
-    left: 50%;
-    transform: (translateX(-50%));
+    left: 0;
+
+    width: 100%;
   }
 }
 
