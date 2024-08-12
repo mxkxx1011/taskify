@@ -1,0 +1,48 @@
+@use '@/styles/index.scss' as *;
+
+.main {
+  width: 100%;
+  height: 100vh;
+  @include Flex(column, center, center);
+  gap: 10px;
+
+  @include tablet {
+    img {
+      width: 100%;
+      max-width: 600px;
+    }
+  }
+}
+
+.title {
+  text-align: center;
+  @include FontStyle('3xl', bold, '2xl', xl);
+}
+
+.content {
+  @include FontStyle(xl, regular, '2lg', md);
+  text-align: center;
+
+  @include mobile {
+    br {
+      display: none;
+    }
+  }
+}
+
+.button-wrapper {
+  margin-top: 20px;
+  @include Flex(row, null, center);
+  gap: 10px;
+
+  button {
+    padding: 13px 23px;
+    border-radius: 8px;
+  }
+}
+
+@include mobile {
+  .line {
+    display: block;
+  }
+}

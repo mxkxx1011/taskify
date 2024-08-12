@@ -73,6 +73,7 @@ export default function TodoCreateModal({ columnId }: { columnId: number }) {
       return res;
     } catch (e: any) {
       console.error(e.message);
+      toast('error', '이미지 업로드에 실패했습니다.');
     }
   }
 
@@ -96,13 +97,13 @@ export default function TodoCreateModal({ columnId }: { columnId: number }) {
         queryKey: ['getCardList', columnId],
       });
 
-      toast('success', '데이터 넣기 성공');
+      toast('success', '할 일이 성공적으로 생성되었습니다.');
       reset(); // 폼 초기화
       setCloseTodoCreateModal();
     },
     onError: (error) => {
       console.error('Create Error:', error);
-      toast('error', error.message);
+      toast('error', '할 일 생성에 실패했습니다.');
     },
   });
 
@@ -124,6 +125,10 @@ export default function TodoCreateModal({ columnId }: { columnId: number }) {
 
     if (dueDate) {
       requestData.dueDate = getDate(dueDate, true);
+    }
+
+    if (!isFormValid) {
+      toast('error', '모든 필수 입력 항목을 입력해주세요.');
     }
 
     postTodoMutation.mutate(requestData); // 폼 데이터 전송

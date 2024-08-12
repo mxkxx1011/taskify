@@ -94,6 +94,7 @@ export default function TodoEditModal({ card }: { card: ICard }) {
       return res;
     } catch (e: any) {
       console.error(e.message);
+      toast('error', '이미지 업로드에 실패했습니다.');
     }
   }
 
@@ -125,12 +126,12 @@ export default function TodoEditModal({ card }: { card: ICard }) {
       queryClient.invalidateQueries({
         queryKey: ['getCardList', selectedProgressValue.id],
       });
-
+      toast('success', '할 일이 성공적으로 수정되었습니다.');
       setCloseEditModal();
     },
     onError: (error) => {
       console.error('Update Error:', error);
-      toast('error', error.message);
+      toast('error', '할 일 수정에 실패했습니다.');
     },
   });
 
@@ -161,7 +162,10 @@ export default function TodoEditModal({ card }: { card: ICard }) {
       dueDate: dueDate ? getDate(dueDate, true) : null,
       imageUrl: currentImageUrl ?? null,
     };
-
+    if (!isFormValid) {
+      toast('error', '모든 필수 입력 항목을 입력해주세요.');
+    }
+    
     updateColumnMutation.mutate(requestData);
   };
 

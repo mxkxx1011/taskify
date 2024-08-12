@@ -19,6 +19,7 @@ import useTodoModalStore from '@/stores/todoModalStore';
 import useTodoEditModalStore from '@/stores/useTodoEditModalStore';
 import TodoEditModal from '../todoEditModal/TodoEditModal';
 import CommentForm from './CommentForm';
+import getRandomTagColor from '@/utils/getRandomTagColor';
 
 export default function TodoModal({ card }: { card: ICard }) {
   const [isKebabOpen, setIsKebabOpen] = useState<boolean>(false);
@@ -77,7 +78,11 @@ export default function TodoModal({ card }: { card: ICard }) {
               <div className={styles['border']} />
               <div className={styles['chip-card-list']}>
                 {tags.map((tag, idx) => (
-                  <ChipCard color='orange' content={tag} key={idx} />
+                  <ChipCard
+                    color={getRandomTagColor(tag, cardId)}
+                    content={tag}
+                    key={idx}
+                  />
                 ))}
               </div>
             </div>

@@ -7,6 +7,7 @@ import { useRef } from 'react';
 import { IconKebab } from '@/assets/icongroup';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { deleteCard } from '@/services/cardService';
+import useToast from '@/hooks/useToast';
 
 export default function KebabDropdown({
   card,
@@ -18,6 +19,7 @@ export default function KebabDropdown({
   const { setCloseTodoModal } = useTodoModalStore();
   const dropdownRef = useRef<HTMLDivElement>(null);
   const { isOpen, setIsOpen } = useDetectClose(dropdownRef, false);
+  const { toast } = useToast();
 
   const queryClient = useQueryClient();
 
@@ -33,6 +35,10 @@ export default function KebabDropdown({
         queryKey: ['getCardList', card.columnId],
       });
       setCloseTodoModal();
+      toast('success', '카드가 성공적으로 삭제되었습니다.');
+    },
+    onError: (error) => {
+      toast('error', '카드 삭제에 실패했습니다.');
     },
   });
 
