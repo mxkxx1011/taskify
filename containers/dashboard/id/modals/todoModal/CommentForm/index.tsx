@@ -3,6 +3,8 @@ import axios from '@/services/axios';
 import { useForm } from 'react-hook-form';
 import styles from './index.module.scss';
 import useToast from '@/hooks/useToast';
+import { useTheme } from '@/hooks/useThemeContext';
+import classNames from 'classNames';
 
 function CommentForm({
   cardId,
@@ -21,6 +23,7 @@ function CommentForm({
   });
 
   const { toast } = useToast();
+  const { theme } = useTheme();
 
   const queryClient = useQueryClient();
 
@@ -52,7 +55,7 @@ function CommentForm({
     <>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className={styles['comment-input-container']}
+        className={classNames(styles['comment-input-container'], styles[theme])}
       >
         <label htmlFor='comment' className={styles['comment-title']}>
           댓글

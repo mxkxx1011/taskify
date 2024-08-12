@@ -55,7 +55,7 @@ function ProfileDropdown({}) {
           nickname={user.nickname}
           imageUrl={user.profileImageUrl as string | null}
         />
-        <p>{user.nickname}</p>
+        <p className={styles['nickname']}>{user.nickname}</p>
       </div>
 
       <Dropdown visibility={isOpen}>

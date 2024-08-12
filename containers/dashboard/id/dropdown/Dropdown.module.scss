@@ -1,3 +1,4 @@
+@import '@/styles/index';
 @import '@/styles/animations';
 @import '@/styles/levels';
 
@@ -20,4 +21,19 @@
 
 .dropdown {
   z-index: $drop-down-menu;
+
+  &.dark {
+    ul {
+      background-color: $dark-dropdown;
+      border: none;
+
+      li {
+        color: rgba($white, 0.87);
+
+        &:hover {
+          color: $dark-theme;
+        }
+      }
+    }
+  }
 }

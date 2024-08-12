@@ -7,6 +7,7 @@ import Dropdown from '../Dropdown';
 import styles from './index.module.scss';
 import useDetectClose from '@/hooks/useDetectClose';
 import { IconArrowDown } from '@/assets/icongroup';
+import { useTheme } from '@/hooks/useThemeContext';
 
 function SelectProgressDropdown({
   columnList,
@@ -21,13 +22,17 @@ function SelectProgressDropdown({
   const dropdownRef = useRef<HTMLDivElement>(null);
   const { isOpen, setIsOpen } = useDetectClose(dropdownRef, false);
 
+  const { theme } = useTheme();
 
   const handleOpenDropdown = () => {
     setIsOpen((prev) => !prev);
   };
 
   return (
-    <div ref={dropdownRef} className={styles['select-input']}>
+    <div
+      ref={dropdownRef}
+      className={classNames(styles['select-input'], styles[theme])}
+    >
       <div
         className={classNames(styles['button'])}
         onClick={handleOpenDropdown}

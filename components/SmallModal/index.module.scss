@@ -12,6 +12,20 @@
 
   @include ModalStyle;
 
+  &.dark {
+    background-color: $dark-card;
+
+    .title {
+      color: rgba($white, 0.87);
+    }
+    .label {
+      color: rgba($white, 0.87);
+    }
+    .input {
+      background-color: $gray-d9;
+    }
+  }
+
   .form {
     @include Flex(column, null, null);
     @include ResponsiveGap(24, 16, 16);

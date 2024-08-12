@@ -9,6 +9,13 @@
   border: 1px solid $gray-d9;
 
   background-color: $white;
+  position: relative;
+
+  transition: all 0.4s ease;
+
+  &:hover {
+    transform: scale(0.92);
+  }
 
   @include Flex(column, null, null);
   @include ResponsiveGap(12, 20, 11);
@@ -28,9 +35,16 @@
     cursor: pointer;
   }
 
+  .assignee {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+  }
+
   &.is-dragging {
     opacity: 0.7;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    scale: (1.2);
   }
 
   @include tablet {
@@ -83,6 +97,7 @@
   .card-content {
     @include Flex(column, null, null);
     @include ResponsiveGap(10, 10, 6);
+    // width: 100%;
 
     @include tablet {
       width: 100%;
@@ -94,6 +109,17 @@
     .tags {
       @include Flex(row, null, center);
       gap: 6px;
+      width: 80%;
+      overflow-x: hidden;
+
+      @include tablet {
+        width: 30%;
+        max-width: 100px;
+      }
+
+      @include mobile {
+        max-width: 200px;
+      }
     }
 
     // 날짜랑 프로필

@@ -16,14 +16,16 @@ import useColumnList from '@/hooks/useColumnList';
 import useCommentList from '@/hooks/useCommentList';
 import useTodoModalStore from '@/stores/todoModalStore';
 
-import useTodoEditModalStore from '@/stores/useTodoEditModalStore';
-import TodoEditModal from '../todoEditModal/TodoEditModal';
 import CommentForm from './CommentForm';
 import getRandomTagColor from '@/utils/getRandomTagColor';
+import { useTheme } from '@/hooks/useThemeContext';
+import classNames from 'classNames';
 
 export default function TodoModal({ card }: { card: ICard }) {
   const [isKebabOpen, setIsKebabOpen] = useState<boolean>(false);
   const { TodoModalId, setCloseTodoModal } = useTodoModalStore();
+
+  const { theme } = useTheme();
 
   const router = useRouter();
   const { id: dashboardId } = router.query;
@@ -53,7 +55,7 @@ export default function TodoModal({ card }: { card: ICard }) {
 
   return (
     <ModalPortal onClose={setCloseTodoModal}>
-      <div className={styles['modal-container']}>
+      <div className={classNames(styles['modal-container'], styles[theme])}>
         <div className={styles['title-and-icons']}>
           <p className={styles['title']}>{title}</p>
           <div className={styles['empty-block']}></div>

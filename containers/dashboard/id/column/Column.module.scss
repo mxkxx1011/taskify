@@ -33,11 +33,12 @@
     width: 100%;
     height: 346px;
     border-bottom: 1px solid $gray-ee;
+    padding: 20px 35px;
   }
 
   @include mobile {
     height: 470px;
-    padding: 16px 12px 12px;
+    padding: 16px 12px;
   }
 
   .circle-chip {
@@ -70,8 +71,20 @@
   @include Flex(column, null, null);
   @include ResponsiveGap(16, 16, 10);
 
-  button > div {
-    justify-content: center;
+  @include tablet {
+    overscroll-behavior: inherit;
+  }
+
+  button {
+    transition: all 0.4s ease;
+
+    > div {
+      justify-content: center;
+    }
+
+    &:hover {
+      transform: scale(0.92);
+    }
   }
 }
 

@@ -3,6 +3,8 @@ import Image from 'next/image';
 import profileImg from '@/assets/images/img_profileImg2.png';
 import getDate from '@/utils/getDate';
 import { ProfileIcon } from '@/components/ProfileIcon/ProfileIcon';
+import { useTheme } from '@/hooks/useThemeContext';
+import classNames from 'classNames';
 
 export default function AssigneeCard({
   assignee,
@@ -11,8 +13,10 @@ export default function AssigneeCard({
   assignee: IAssignee;
   dueDate: string | null;
 }) {
+  const { theme } = useTheme();
+
   return (
-    <div className={styles['container']}>
+    <div className={classNames(styles['container'], styles[theme])}>
       <div className={styles['title-and-contents']}>
         <p className={styles['title']}>담당자</p>
         {assignee ? (

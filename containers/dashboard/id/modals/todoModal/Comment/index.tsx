@@ -7,6 +7,8 @@ import styles from './index.module.scss';
 import { useEffect } from 'react';
 import { useUserStore } from '@/store/useUserStore';
 import { ProfileIcon } from '@/components/ProfileIcon/ProfileIcon';
+import { useTheme } from '@/hooks/useThemeContext';
+import classNames from 'classNames';
 
 function Comment({ comment }: { comment: IComment }) {
   const {
@@ -19,6 +21,8 @@ function Comment({ comment }: { comment: IComment }) {
   } = comment;
 
   const { id: authorId, nickname, profileImageUrl } = author;
+
+  const { theme } = useTheme();
   const { user } = useUserStore();
   const queryClient = useQueryClient();
 
@@ -71,7 +75,7 @@ function Comment({ comment }: { comment: IComment }) {
 
   return (
     <>
-      <div className={styles['comment-card']}>
+      <div className={classNames(styles['comment-card'], styles[theme])}>
         <ProfileIcon nickname={nickname} imageUrl={profileImageUrl} />
 
         <div className={styles['comment-contents']}>

@@ -2,6 +2,8 @@ import styles from './index.module.scss';
 import { modalValues } from '@/constants/ModalConstant';
 import { useForm } from 'react-hook-form';
 import Button from '../Button';
+import { useTheme } from '@/hooks/useThemeContext';
+import classNames from 'classNames';
 
 function SmallModal({
   type,
@@ -23,19 +25,22 @@ function SmallModal({
     },
   });
 
+  const { theme } = useTheme();
+
   return (
-    <div className={styles['modal']}>
+    <div className={classNames(styles['modal'], styles[theme])}>
       <form onSubmit={handleSubmit(onSubmit)} className={styles['form']}>
         <div>
           <p className={styles['title']}>{modalValues[type].title}</p>
         </div>
         <div className={styles['input-wrapper']}>
-          <label htmlFor={modalValues[type].id}>
+          <label className={styles['label']} htmlFor={modalValues[type].id}>
             {modalValues[type].label}
           </label>
           <input
             id={modalValues[type].id}
             type='text'
+            className={styles['input']}
             placeholder={modalValues[type].placeholder}
             {...register(modalValues[type].id)}
           />

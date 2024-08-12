@@ -9,10 +9,14 @@ import { deleteColumn } from '@/services/columnService';
 import useToast from '@/hooks/useToast';
 import { useRouter } from 'next/router';
 import useDeleteAlertModalStore from '@/stores/useDeleteAlertModalStore';
+import { useTheme } from '@/hooks/useThemeContext';
+import classNames from 'classNames';
 
 function DeleteAlertModal({ columnId }: { columnId: number }) {
   const router = useRouter();
   const { id: dashboardId } = router.query;
+
+  const { theme } = useTheme();
 
   const { toast } = useToast();
   const queryClient = useQueryClient();
@@ -37,7 +41,7 @@ function DeleteAlertModal({ columnId }: { columnId: number }) {
   if (AlertModalId !== columnId) return <></>;
   return (
     <ModalPortal onClose={setCloseAlertModal}>
-      <div className={styles['modal']}>
+      <div className={classNames(styles['modal'], styles[theme])}>
         <div className={styles['modal-wrapper']}>
           <p className={styles['alert']}>
             해당 컬럼과 해당 컬럼의{' '}

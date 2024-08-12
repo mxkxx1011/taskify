@@ -11,6 +11,7 @@
 
   @include Flex(row, center, center);
   position: relative;
+  transition: all 1s ease;
 
   &.dark {
     border: 2px solid rgba($white, 0.5);

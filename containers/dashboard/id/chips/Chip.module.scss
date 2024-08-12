@@ -60,6 +60,11 @@
   @include FontStyle(12, 500);
   line-height: 14.32px;
   color: $gray-78;
+
+  &.dark {
+    color: rgba($white, 0.6);
+    background-color: $dark-card;
+  }
 }
 
 // chip - add 컴포넌트
@@ -93,6 +98,7 @@
   width: fit-content;
   padding: 4px 6px;
   border-radius: 4px;
+  white-space: nowrap;
 
   @include FontStyle(12, 400, 12, 10);
   @include ResponsiveLineHeight(14.3, 14.3, 12);
@@ -127,6 +133,7 @@
   padding: 4px 8px;
   border-radius: 11px;
   width: fit-content;
+  white-space: nowrap;
 
   @include Flex(row, null, center);
   gap: 3px;

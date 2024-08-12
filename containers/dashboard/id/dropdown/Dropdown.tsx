@@ -1,3 +1,4 @@
+import { useTheme } from '@/hooks/useThemeContext';
 import classNames from 'classNames';
 import { ReactNode, useEffect, useState } from 'react';
 import styles from './Dropdown.module.scss';
@@ -11,6 +12,8 @@ function Dropdown({
 }) {
   const [visibilityAnimation, setVisibilityAnimation] = useState(false);
   const [repeat, setRepeat] = useState<any>();
+
+  const { theme } = useTheme();
 
   useEffect(() => {
     if (visibility) {
@@ -31,6 +34,7 @@ function Dropdown({
       className={classNames(
         styles['dropdown'],
         visibility ? styles['fade-in'] : styles['fade-out'],
+        styles[theme],
       )}
     >
       {visibilityAnimation && children}

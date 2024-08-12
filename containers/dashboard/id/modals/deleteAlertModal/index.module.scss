@@ -9,6 +9,18 @@
   @include ResponsiveWidth(568px, 568px, 327px);
 
   padding: 24px;
+
+  &.dark {
+    background-color: $dark-card;
+
+    input {
+      background-color: $gray-d9;
+    }
+
+    .alert {
+      color: rgba($white, 0.87);
+    }
+  }
 }
 
 .modal-wrapper {

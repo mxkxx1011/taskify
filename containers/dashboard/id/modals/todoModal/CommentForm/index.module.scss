@@ -6,6 +6,21 @@
   @include Flex(column, null, null);
   gap: 10px;
   position: relative;
+
+  &.dark {
+    label {
+      color: rgba($white, $alpha: 0.87);
+    }
+    textarea {
+      background-color: $gray-d9;
+    }
+
+    .submit-btn {
+      background-color: rgba($main-yellow, 0.87);
+      border: none;
+      color: $white;
+    }
+  }
 }
 
 .comment-title {

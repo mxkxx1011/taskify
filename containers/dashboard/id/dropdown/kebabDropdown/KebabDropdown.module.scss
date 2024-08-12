@@ -12,6 +12,12 @@
 .kebab-dropdown {
   position: relative;
 
+  &.dark {
+    & > svg {
+      fill: rgba($white, 0.87);
+    }
+  }
+
   & > svg {
     width: 28px;
     height: 28px;

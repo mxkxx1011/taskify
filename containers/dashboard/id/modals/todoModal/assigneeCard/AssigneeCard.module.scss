@@ -9,6 +9,17 @@
   width: 200px;
   height: 155px;
   padding: 16px;
+
+  &.dark {
+    background-color: $dark-card-top;
+    border: none;
+    .title {
+      color: rgba($white, 1);
+    }
+    .contents {
+      color: rgba($white, 0.87);
+    }
+  }
 }
 
 .title-and-contents {
@@ -17,9 +28,8 @@
 }
 
 .title {
-  font-weight: 600;
-  font-size: 12px;
-  line-height: 20px;
+  @include FontStyle(xs, semibold);
+  color: $black;
 }
 
 .assignee {
@@ -27,14 +37,8 @@
   gap: 8px;
 }
 
-.profileImg {
-  width: 34px;
-}
-
 .contents {
-  font-size: 14px;
-  line-height: 16px;
-  font-weight: 400;
+  @include FontStyle(md, regular, md, xs);
   color: $black-33;
 }
 
@@ -48,22 +52,11 @@
   .container {
     @include Flex(row, space-between, null);
     width: 100%;
-    height: 64px;
+    height: 85px;
     padding: 9px 16px;
     gap: 8px;
   }
   .title-and-contents {
-    @include Flex(column, space-between, null);
-    gap: 0;
-
-    .contents {
-      font-size: 12px;
-      line-height: 14px;
-      font-weight: 400;
-      color: $black-33;
-    }
-    .profileImg {
-      width: 26px;
-    }
+    gap: 5px;
   }
 }

@@ -66,6 +66,8 @@ function Card({ card }: { card: ICard }) {
                     <IconCalender width={18} height={18} />
                     <p className={styles['small-txt']}>{getDate(dueDate)}</p>
                   </div>
+                </div>
+                <div className={styles['assignee']}>
                   {assignee ? (
                     <ProfileIcon
                       nickname={assignee.nickname}

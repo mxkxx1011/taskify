@@ -8,6 +8,8 @@ import { IconKebab } from '@/assets/icongroup';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { deleteCard } from '@/services/cardService';
 import useToast from '@/hooks/useToast';
+import { useTheme } from '@/hooks/useThemeContext';
+import classNames from 'classNames';
 
 export default function KebabDropdown({
   card,
@@ -46,8 +48,13 @@ export default function KebabDropdown({
     deleteCardMutation.mutate();
   };
 
+  const { theme } = useTheme();
+
   return (
-    <div ref={dropdownRef} className={styles['kebab-dropdown']}>
+    <div
+      ref={dropdownRef}
+      className={classNames(styles['kebab-dropdown'], styles[theme])}
+    >
       <IconKebab className={styles['icon']} onClick={handleOpenDropdown} />
 
       <Dropdown visibility={isOpen}>

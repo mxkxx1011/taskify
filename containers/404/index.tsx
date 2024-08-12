@@ -1,4 +1,6 @@
 import Button from '@/components/Button';
+import { useTheme } from '@/hooks/useThemeContext';
+import classNames from 'classNames';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import styles from './404.module.scss';
@@ -7,9 +9,26 @@ import styles from './404.module.scss';
 function NotFound() {
   const router = useRouter();
 
+  const { theme } = useTheme();
+
   return (
-    <div className={styles['main']}>
-      <Image src='/404.png' priority width={600} height={400} alt='404 image' />
+    <div className={classNames(styles['main'], styles[theme])}>
+      <Image
+        src='/404.png'
+        className={styles['light-img']}
+        priority
+        width={600}
+        height={400}
+        alt='404 image'
+      />
+      <Image
+        src='/card-404.png'
+        className={styles['dark-img']}
+        priority
+        width={600}
+        height={400}
+        alt='404 image'
+      />
       <h2 className={styles['title']}>
         죄송합니다.{' '}
         <span className={styles['line']}>
