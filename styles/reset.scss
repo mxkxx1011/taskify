@@ -105,3 +105,19 @@ ol,
 ul {
   list-style: none;
 }
+
+// dark 모드 시 스크롤 까맣게
+body[data-theme='dark'] {
+  &::-webkit-scrollbar-track {
+    background-color: #171b1c;
+    &:hover {
+      background-color: #171b1c;
+    }
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-clip: padding-box;
+    background-color: #41474b;
+    border-radius: 10px;
+  }
+}
