@@ -22,7 +22,7 @@ function MemberListItem({ item }: { item: any }) {
       });
       toast('success', '구성원을 성공적으로 삭제 했습니다.');
     },
-    onError: (err) => {
+    onError: (err: any) => {
       toast('error', `${err.response.data.message}`);
     },
   });

@@ -34,7 +34,7 @@ function EditDashboardName({ id }: { id: string | string[] | undefined }) {
       queryClient.invalidateQueries({ queryKey: ['dashboard'] });
       toast('success', '대시보드가 성공적으로 수정되었습니다.');
     },
-    onError: (err) => {
+    onError: (err: any) => {
       toast('error', `${err.response.data.message}`);
     },
   });

@@ -28,7 +28,7 @@ function DashboardEdit() {
       });
       toast('success', '대시보드를 성공적으로 삭제했습니다.');
     },
-    onError: (err) => {
+    onError: (err: any) => {
       toast('error', `${err.response.data.message}`);
     },
   });

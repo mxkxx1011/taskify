@@ -7,10 +7,10 @@
     "parser": "babel-eslint",
     "extends": [
       "eslint:recommended",
-      "plugin:react/recommended",
-      "next/core-web-vitals",
+      // "plugin:react/recommended",
+      // "next/core-web-vitals",
       "plugin:prettier/recommended",
-      "prettier"
+      // "prettier"
     ],
     "settings": {
       "react": {

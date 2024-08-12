@@ -19,7 +19,7 @@ function InviteModal({ id }: { id: string | string[] | undefined }) {
       setCloseModal();
       toast('success', '초대를 성공적으로 보냈습니다.');
     },
-    onError: (err) => {
+    onError: (err: any) => {
       toast('error', `${err.response.data.message}`);
     },
   });

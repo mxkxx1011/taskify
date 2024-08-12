@@ -20,7 +20,7 @@ function InvitationListItem({ item, id }: any) {
       });
       toast('success', '초대를 성공적으로 취소했습니다.');
     },
-    onError: (err) => {
+    onError: (err: any) => {
       toast('error', `${err.response.data.message}`);
     },
   });
