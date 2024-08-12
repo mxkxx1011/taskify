@@ -1,5 +1,5 @@
 import { useTheme } from '@/hooks/useThemeContext';
-import classNames from 'classNames';
+import classNames from 'classnames';
 import styles from './Chip.module.scss';
 
 function ChipNum({ num }: { num: number }) {

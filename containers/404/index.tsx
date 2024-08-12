@@ -1,6 +1,6 @@
 import Button from '@/components/Button';
 import { useTheme } from '@/hooks/useThemeContext';
-import classNames from 'classNames';
+import classNames from 'classnames';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import styles from './404.module.scss';

@@ -3,7 +3,7 @@ import { modalValues } from '@/constants/ModalConstant';
 import { useForm } from 'react-hook-form';
 import Button from '../Button';
 import { useTheme } from '@/hooks/useThemeContext';
-import classNames from 'classNames';
+import classNames from 'classnames';
 
 function SmallModal({
   type,

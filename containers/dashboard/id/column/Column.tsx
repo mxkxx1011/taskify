@@ -9,7 +9,7 @@ import styles from './Column.module.scss';
 import EmptyColumn from './EmptyColumn';
 import { Droppable } from '@hello-pangea/dnd';
 
-import classNames from 'classNames';
+import classNames from 'classnames';
 import { useInView } from 'react-intersection-observer';
 import { useEffect } from 'react';
 import useInfiniteScroll from '@/hooks/useInfiniteScroll';

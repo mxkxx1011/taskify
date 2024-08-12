@@ -1,6 +1,6 @@
 import { ProfileIcon } from '@/components/ProfileIcon/ProfileIcon';
 import { useTheme } from '@/hooks/useThemeContext';
-import classNames from 'classNames';
+import classNames from 'classnames';
 import Image from 'next/image';
 import styles from './index.module.scss';
 

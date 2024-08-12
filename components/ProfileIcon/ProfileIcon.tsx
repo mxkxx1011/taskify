@@ -2,7 +2,7 @@ import Image from 'next/image';
 import styles from './ProfileIcon.module.scss';
 import getBackgroundColor from '@/utils/getBackgroundColor';
 import { useTheme } from '@/hooks/useThemeContext';
-import classNames from 'classNames';
+import classNames from 'classnames';
 
 interface ProfileIconProps {
   nickname: string;

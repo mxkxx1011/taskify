@@ -1,6 +1,6 @@
 import { IconCircleChip } from '@/assets/icongroup';
 import styles from './Chip.module.scss';
-import classNames from 'classNames';
+import classNames from 'classnames';
 
 function ChipProgress({
   title,

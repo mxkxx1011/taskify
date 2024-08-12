@@ -8,7 +8,7 @@ import { useEffect } from 'react';
 import { useUserStore } from '@/store/useUserStore';
 import { ProfileIcon } from '@/components/ProfileIcon/ProfileIcon';
 import { useTheme } from '@/hooks/useThemeContext';
-import classNames from 'classNames';
+import classNames from 'classnames';
 
 function Comment({ comment }: { comment: IComment }) {
   const {

@@ -1,5 +1,5 @@
 import styles from './Chip.module.scss';
-import classNames from 'classNames';
+import classNames from 'classnames';
 import { useTheme } from '@/hooks/useThemeContext';
 
 function ChipCard({ color, content }: { color: string; content: string }) {

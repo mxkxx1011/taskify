@@ -19,7 +19,7 @@ import useTodoModalStore from '@/stores/todoModalStore';
 import CommentForm from './CommentForm';
 import getRandomTagColor from '@/utils/getRandomTagColor';
 import { useTheme } from '@/hooks/useThemeContext';
-import classNames from 'classNames';
+import classNames from 'classnames';
 
 export default function TodoModal({ card }: { card: ICard }) {
   const [isKebabOpen, setIsKebabOpen] = useState<boolean>(false);

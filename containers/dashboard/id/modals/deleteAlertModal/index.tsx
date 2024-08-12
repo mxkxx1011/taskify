@@ -10,7 +10,7 @@ import useToast from '@/hooks/useToast';
 import { useRouter } from 'next/router';
 import useDeleteAlertModalStore from '@/stores/useDeleteAlertModalStore';
 import { useTheme } from '@/hooks/useThemeContext';
-import classNames from 'classNames';
+import classNames from 'classnames';
 
 function DeleteAlertModal({ columnId }: { columnId: number }) {
   const router = useRouter();

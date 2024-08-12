@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import styles from './index.module.scss';
 import useToast from '@/hooks/useToast';
 import { useTheme } from '@/hooks/useThemeContext';
-import classNames from 'classNames';
+import classNames from 'classnames';
 
 function CommentForm({
   cardId,

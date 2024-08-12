@@ -9,7 +9,7 @@ import useTodoModalStore from '@/stores/todoModalStore';
 import useTodoEditModalStore from '@/stores/useTodoEditModalStore';
 import TodoEditModal from '../modals/todoEditModal/TodoEditModal';
 import { Draggable } from '@hello-pangea/dnd';
-import classNames from 'classNames';
+import classNames from 'classnames';
 import getRandomTagColor from '@/utils/getRandomTagColor';
 import { useTheme } from '@/hooks/useThemeContext';
 import { ProfileIcon } from '@/components/ProfileIcon/ProfileIcon';

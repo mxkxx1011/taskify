@@ -9,7 +9,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { deleteCard } from '@/services/cardService';
 import useToast from '@/hooks/useToast';
 import { useTheme } from '@/hooks/useThemeContext';
-import classNames from 'classNames';
+import classNames from 'classnames';
 
 export default function KebabDropdown({
   card,
