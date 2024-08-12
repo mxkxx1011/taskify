@@ -5,6 +5,7 @@ import useDeleteAlertModalStore from '@/stores/useDeleteAlertModalStore';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import axios from '@/services/axios';
 import { useRouter } from 'next/router';
+import useToast from '@/hooks/useToast';
 
 function ManageModal({ defaultValue }: { defaultValue: string }) {
   const { ManageModalId, setCloseManageModal } = useManageModalStore();
@@ -13,6 +14,7 @@ function ManageModal({ defaultValue }: { defaultValue: string }) {
   const router = useRouter();
   const { id: dashboardId } = router.query;
   const { setOpenAlertModal } = useDeleteAlertModalStore();
+  const { toast } = useToast();
 
   // 컬럼 이름 변경하는 mutate 함수
   const updateColumnMutation = useMutation({
@@ -24,6 +26,10 @@ function ManageModal({ defaultValue }: { defaultValue: string }) {
         queryKey: ['getColumnList', dashboardId],
       });
       setCloseManageModal();
+      toast('success', '컬럼 이름이 변경되었습니다.');
+    },
+    onError: (e: any) => {
+      toast('error', '컬럼 이름 변경에 실패하셨습니다.');
     },
   });
 

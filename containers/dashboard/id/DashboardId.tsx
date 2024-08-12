@@ -15,6 +15,8 @@ import { useTheme } from '@/hooks/useThemeContext';
 import Spinner from '@/components/Spinner';
 import { useEffect } from 'react';
 import useToast from '@/hooks/useToast';
+import useDashboardMember from '@/hooks/useDashboardMember';
+import { useUserStore } from '@/store/useUserStore';
 
 function DashboardId() {
   const { theme } = useTheme();
@@ -27,13 +29,22 @@ function DashboardId() {
   const { isModalOpen, setOpenModal } = useCreateModalStore();
   const { columnList, isLoading, error } = useColumnList(id);
 
+  const { dashboardMemberList } = useDashboardMember(Number(id));
+  const { user } = useUserStore();
+
   // 에러나면 다시 mydashboard로
   useEffect(() => {
     if (error) {
       router.push('/mydashboard');
       toast('error', '대시보드 로딩에 실패했습니다.');
     }
-  }, [isLoading, error]);
+
+    if (
+      !dashboardMemberList.some((member: IMember) => user?.id === member.id)
+    ) {
+      router.push('/mydashboard');
+    }
+  }, [isLoading, error, id]);
 
   // 로딩일 경우 스피너
   if (isLoading)

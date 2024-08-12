@@ -24,14 +24,14 @@
 
   &.dark {
     ul {
-      background-color: $dark-dropdown;
+      background-color: $dark-card-top;
       border: none;
 
       li {
         color: rgba($white, 0.87);
 
         &:hover {
-          color: $dark-theme;
+          background-color: $dark-card-active;
         }
       }
     }

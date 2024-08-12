@@ -30,6 +30,7 @@ function DeleteAlertModal({ columnId }: { columnId: number }) {
         queryKey: ['getColumnList', dashboardId],
       });
       setCloseAlertModal();
+      toast('success', '컬럼이 삭제되었습니다.');
     },
     onError: (e) => toast('error', e.message),
   });

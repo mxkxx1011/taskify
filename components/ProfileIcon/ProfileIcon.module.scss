@@ -11,10 +11,14 @@
 
   @include Flex(row, center, center);
   position: relative;
-  transition: all 1s ease;
+  transition: all 0.4s ease;
 
   &.dark {
-    border: 2px solid rgba($white, 0.5);
+    border: 2px solid $dark-card-top;
+
+    .substring {
+      color: $dark-card-top;
+    }
   }
 
   .image {

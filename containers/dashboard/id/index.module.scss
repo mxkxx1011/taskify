@@ -21,6 +21,11 @@
 
     button {
       @include Flex(row, center, center);
+      transition: all 0.4s ease;
+
+      &:hover {
+        transform: scale(0.92);
+      }
     }
 
     @include tablet {

@@ -36,6 +36,7 @@ function CreateModal(id: any) {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['getColumnList', id.id] });
       setCloseModal();
+      toast('success', '컬럼이 생성되었습니다.');
     },
     onError: (e: any) => {
       if (e instanceof DuplicateColumnError) {

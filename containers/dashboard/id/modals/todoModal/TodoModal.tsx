@@ -48,7 +48,7 @@ export default function TodoModal({ card }: { card: ICard }) {
     (column: IColumn) => column.id === columnId,
   );
 
-  // 나중에 에러처리 하기
+  // TODO: 나중에 에러처리 하기
   if (!TodoModalId) return <></>;
   if (isLoading) return <></>;
   if (isCommentLoading) return <></>;
