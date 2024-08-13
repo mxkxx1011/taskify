@@ -29,20 +29,11 @@ function DashboardId() {
   const { isModalOpen, setOpenModal } = useCreateModalStore();
   const { columnList, isLoading, error } = useColumnList(id);
 
-  const { dashboardMemberList } = useDashboardMember(Number(id));
-  const { user } = useUserStore();
-
   // 에러나면 다시 mydashboard로
   useEffect(() => {
     if (error) {
       router.push('/mydashboard');
       toast('error', '대시보드 로딩에 실패했습니다.');
-    }
-
-    if (
-      !dashboardMemberList.some((member: IMember) => user?.id === member.id)
-    ) {
-      router.push('/mydashboard');
     }
   }, [isLoading, error, id]);
 
