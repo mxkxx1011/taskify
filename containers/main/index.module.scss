@@ -8,6 +8,8 @@
   margin: 130px auto 160px;
   width: 1200px;
 
+  transition: all 0.3s ease;
+
   @include tablet {
     width: 100%;
     padding: 0 40px;
@@ -15,12 +17,48 @@
   @include mobile {
     padding: 0 16px;
   }
-}
 
-.hero-section {
-  @include Flex(column, center, center);
-  gap: 40px;
+  &.dark {
+    .hero-img-black {
+      display: none;
+    }
 
+    .hero-img-gray {
+      display: block;
+    }
+
+    .manage-black {
+      display: none;
+    }
+    .manage-gray {
+      display: block;
+    }
+
+    .section-background {
+      background-color: $dark-card;
+    }
+
+    .section-title-content {
+      color: rgba($white, 0.87);
+    }
+
+    .section-setting-title {
+      color: rgba($white, 0.87);
+    }
+  }
+
+  .hero-section {
+    @include Flex(column, center, center);
+    gap: 40px;
+  }
+
+  .hero-img-black {
+    display: block;
+  }
+
+  .hero-img-gray {
+    display: none;
+  }
   .hero-img {
     @include ResponsiveWidth(722px, 722px, 150%);
     height: 100%;
@@ -42,11 +80,14 @@
 
   .hero-title {
     @include Flex(column, center, center);
-
-    .logo {
-      // margin-top: -20px;
-    }
   }
+}
+
+.manage-black {
+  display: block;
+}
+.manage-gray {
+  display: none;
 }
 
 .section-list {
@@ -58,6 +99,7 @@
   width: 100%;
   @include ResponsiveHeight(600px, 972px, 686px);
   @include border-radius(8px);
+  overflow-y: hidden;
   background-color: $gray-fa;
 
   .section-title {
@@ -111,7 +153,6 @@
 
   @include Flex(row, null, null);
   @include ResponsiveGap(100, 240, 192);
-  // gap: 100px;
 
   @include tablet {
     @include Flex(column, null, null);

@@ -18,8 +18,9 @@ function ManageModal({ defaultValue }: { defaultValue: string }) {
 
   // 컬럼 이름 변경하는 mutate 함수
   const updateColumnMutation = useMutation({
-    mutationFn: (newTitle: string) =>
-      axios.put(`/columns/${ManageModalId}`, { title: newTitle }),
+    mutationFn: (newTitle: string) => {
+      return axios.put(`/columns/${ManageModalId}`, { title: newTitle });
+    },
     onSuccess: () => {
       // 해당 쿼리 키 값을 가진 데이터를 새로 get
       queryClient.invalidateQueries({

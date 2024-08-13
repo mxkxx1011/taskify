@@ -54,9 +54,7 @@ function SmallModal({
             {modalValues[type].leftBtn}
           </Button>
 
-          <Button buttonType='primary' onClick={handleRightBtnClick}>
-            {modalValues[type].rightBtn}
-          </Button>
+          <Button buttonType='primary'>{modalValues[type].rightBtn}</Button>
         </div>
       </form>
     </div>

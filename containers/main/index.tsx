@@ -15,17 +15,49 @@ import LandingImage02 from '@/assets/landing/landing2.png';
 import SettingList from './SettingList';
 import Footer from './Footer';
 import { SettingListValues } from '@/constants/MainPageConstants';
+import { useTheme } from '@/hooks/useThemeContext';
+import classNames from 'classnames';
 
 function MainPage() {
+  const { theme } = useTheme();
+
   return (
     <>
       <Header />
-      <main className={styles['main']}>
+      <main className={classNames(styles['main'], styles[theme])}>
         <section className={styles['hero-section']}>
-          <HeroImage className={styles['hero-img']} />
+          <Image
+            src='/hero-black.png'
+            className={styles['hero-img-black']}
+            width={1024}
+            height={768}
+            alt='메인 히어로 이미지'
+            priority
+          />
+          <Image
+            src='/hero-gray.png'
+            className={styles['hero-img-gray']}
+            width={1024}
+            height={768}
+            alt='메인 히어로 이미지'
+            priority
+          />
 
           <div className={styles['hero-title']}>
-            <ManageText className={styles['manage']} />
+            <Image
+              src='/manage-black.png'
+              alt='manage text'
+              width={500}
+              height={50}
+              className={styles['manage-black']}
+            />
+            <Image
+              src='/manage-gray.png'
+              alt='manage text'
+              width={500}
+              height={50}
+              className={styles['manage-gray']}
+            />
             <Logo className={styles['logo']} />
           </div>
 
@@ -39,7 +71,7 @@ function MainPage() {
             <div className={styles['section-title']}>
               <p>Point 1</p>
 
-              <h2>
+              <h2 className={styles['section-title-content']}>
                 일의 <span className={styles['strong']}>우선순위</span>를
                 <br />
                 관리하세요
@@ -48,8 +80,10 @@ function MainPage() {
             <div className={styles['img-wrapper']}>
               <Image
                 className={styles['landing-img-01']}
-                src={LandingImage01}
+                src='/landing1.svg'
                 alt='랜딩이미지'
+                width={591}
+                height={498}
               />
             </div>
           </section>
@@ -67,7 +101,7 @@ function MainPage() {
             <div className={styles['section-title']}>
               <p>Point 2</p>
 
-              <h2>
+              <h2 className={styles['section-title-content']}>
                 해야 <span className={styles['strong']}>할 일</span>을
                 <br />
                 <span className={styles['strong']}>등록</span>하세요

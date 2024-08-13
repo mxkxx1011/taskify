@@ -26,6 +26,10 @@
   overflow: hidden;
   transition: all 0.2s;
 
+  &.dark {
+    opacity: 0.87;
+  }
+
   .login {
     display: block;
     margin-left: 0.3em;

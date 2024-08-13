@@ -31,6 +31,7 @@ export default function AssigneeCard({
           <div className={styles['contents']}>미정</div>
         )}
       </div>
+
       <div className={styles['title-and-contents']}>
         <p className={styles['title']}>마감일</p>
         <p className={classNames(styles['contents'], styles['date'])}>

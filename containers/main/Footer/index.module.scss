@@ -5,6 +5,10 @@
   width: 100%;
   padding: 39px 140px;
 
+  &.dark {
+    border-top: 1px solid $dark-card;
+  }
+
   @include tablet {
     padding: 40.5px 40px;
   }

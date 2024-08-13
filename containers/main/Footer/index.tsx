@@ -1,10 +1,13 @@
 import { IconEnvelop, IconFacebook, IconInstagram } from '@/assets/icongroup';
+import { useTheme } from '@/hooks/useThemeContext';
+import classNames from 'classnames';
 import Link from 'next/link';
 import styles from './index.module.scss';
 
 function Footer() {
+  const { theme } = useTheme();
   return (
-    <footer className={styles['footer']}>
+    <footer className={classNames(styles['footer'], styles[theme])}>
       <div className={styles['footer-wrapper']}>
         <p>@Schedo - 2024</p>
         <div className={styles['links']}>

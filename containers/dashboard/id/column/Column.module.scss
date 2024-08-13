@@ -5,7 +5,7 @@
 .column {
   width: 355px;
   height: 92vh;
-  border-right: 2px solid $gray-ee;
+  border-right: 1px solid $gray-ee;
   padding: 20px;
   @include Flex(column, null, null);
   @include ResponsiveGap(24, 24, 16);
@@ -15,10 +15,10 @@
   }
 
   &.dark {
-    border-right: 2px solid $dark-card;
+    border-right: 1px solid $dark-card;
 
     @include tablet {
-      border-bottom: 2px solid $dark-card;
+      border-bottom: 1px solid $dark-card;
     }
     .setting-icon {
       fill: rgba($white, 0.87);

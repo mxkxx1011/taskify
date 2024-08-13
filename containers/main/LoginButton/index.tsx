@@ -1,10 +1,16 @@
 import styles from './index.module.scss';
 import Login from '@/assets/logos/login.svg';
 import Link from 'next/link';
+import { useTheme } from '@/hooks/useThemeContext';
+import classNames from 'classnames';
 
 function LoginButton() {
+  const { theme } = useTheme();
   return (
-    <Link href='/signin' className={styles['button']}>
+    <Link
+      href='/signin'
+      className={classNames(styles['button'], styles[theme])}
+    >
       <div className={styles['svg-wrapper-1']}>
         <div className={styles['svg-wrapper']}>
           <svg

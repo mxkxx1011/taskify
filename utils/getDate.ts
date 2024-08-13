@@ -2,21 +2,21 @@
 // null일 경우 미정 반환
 
 function getDate(dateString: string | null, time?: boolean): string {
-  let formattedDate;
   if (typeof dateString == 'string') {
     const now = new Date(dateString);
-    const utc = now.getTime() + now.getTimezoneOffset() * 60 * 1000;
-    const koreaTimeDiff = 9 * 60 * 60 * 1000;
-    const korNow = new Date(utc + koreaTimeDiff); // 한국 시간 구하기
-    const year = korNow.getFullYear();
-    const month = String(korNow.getMonth() + 1).padStart(2, '0');
-    const day = String(korNow.getDate()).padStart(2, '0');
 
-    formattedDate = `${year}-${month}-${day}`;
+    const koreaTimeDiff = 9 * 60 * 60 * 1000;
+    // const now = new Date(now.getTime() + koreaTimeDiff); // 한국 시간 구하기
+
+    const year = now.getUTCFullYear();
+    const month = String(now.getUTCMonth() + 1).padStart(2, '0');
+    const day = String(now.getUTCDate()).padStart(2, '0');
+
+    let formattedDate = `${year}-${month}-${day}`;
 
     if (time) {
-      const hours = String(korNow.getHours()).padStart(2, '0');
-      const minutes = String(korNow.getMinutes()).padStart(2, '0');
+      const hours = String(now.getUTCHours()).padStart(2, '0');
+      const minutes = String(now.getUTCMinutes()).padStart(2, '0');
       formattedDate += ` ${hours}:${minutes}`;
     }
     return formattedDate;

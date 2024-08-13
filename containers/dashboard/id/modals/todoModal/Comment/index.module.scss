@@ -11,6 +11,10 @@
   &.dark {
     border-bottom: 1px solid $dark-card-top;
 
+    .border {
+      background-color: $dark-card-top;
+    }
+
     .writer {
       color: rgba($white, 1);
     }

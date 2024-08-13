@@ -2,6 +2,20 @@
 
 .list {
   @include ResponsiveWidth(378px, 378px, 100%);
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba($black, 0.12), 0 1px 2px rgba($black, 0.24);
+
+  &.dark {
+    .top {
+      background-color: $dark-card-top;
+    }
+    .bottom {
+      background-color: $dark-card;
+    }
+    p {
+      opacity: 0.87;
+    }
+  }
 
   @include mobile {
     max-width: 343px;
@@ -33,7 +47,7 @@
   @include ResponsiveHeight(260px, 260px, 236px);
   @include border-radius(8px 8px 0 0);
 
-  background-color: $black-4b;
+  background-color: $gray-ee;
 }
 
 .bottom {
@@ -44,7 +58,8 @@
 
   @include ResponsivePadding(0 0 0 32px, 0 0 0 32px, 0 0 0 28px);
 
-  background-color: $black-17;
+  // background-color: $black-17;
+  background-color: $main-yellow;
 
   .title {
     @include FontStyle('2lg', bold);
