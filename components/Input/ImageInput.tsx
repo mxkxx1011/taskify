@@ -8,6 +8,7 @@ import {
 } from 'react';
 import styles from './ImageInput.module.scss';
 import { IconClose, IconEdit, IconAddChip } from '@/assets/icongroup';
+import { useTheme } from '@/hooks/useThemeContext';
 
 interface ImageInputProps {
   name: string;
@@ -24,6 +25,7 @@ export default function ImageInput({
 }: ImageInputProps) {
   const inputRef = useRef<HTMLInputElement>(null);
   const [tempImage, setTempImage] = useState<string | null>(value || '');
+  const { theme } = useTheme();
 
   useEffect(() => {
     // Update tempImage when value changes
@@ -49,7 +51,7 @@ export default function ImageInput({
   };
 
   return (
-    <div className={styles[`size`]}>
+    <div className={`${styles[`size`]} ${styles[theme]}`}>
       {tempImage ? (
         <label htmlFor={name} className={styles[`label-input`]}>
           <Image

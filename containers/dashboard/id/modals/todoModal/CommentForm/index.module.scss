@@ -12,13 +12,20 @@
       color: rgba($white, $alpha: 0.87);
     }
     textarea {
-      background-color: $gray-d9;
+      background-color: $dark-card-top;
+      border: 1px solid $dark-card-top;
+      color: rgba($white, 0.87);
+
+      &::placeholder {
+        color: rgba($white, 0.6);
+      }
     }
 
     .submit-btn {
       background-color: rgba($main-yellow, 0.87);
       border: none;
       color: $white;
+      outline: 1px solid $main-yellow;
     }
   }
 }

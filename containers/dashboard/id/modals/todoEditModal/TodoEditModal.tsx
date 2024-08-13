@@ -161,8 +161,8 @@ export default function TodoEditModal({ card }: { card: ICard }) {
       columnId: selectedProgressValue.id,
       assigneeUserId: selectedAssigneeValue
         ? 'userId' in selectedAssigneeValue
-          ? selectedAssigneeValue?.userId ?? null
-          : selectedAssigneeValue?.id ?? null
+          ? (selectedAssigneeValue?.userId ?? null)
+          : (selectedAssigneeValue?.id ?? null)
         : null,
       tags: tags,
 
@@ -249,12 +249,11 @@ export default function TodoEditModal({ card }: { card: ICard }) {
           </div>
           <div className={styles['label-and-form']}>
             <label className={styles['form-label']}>태그</label>
-            <HashTagsInput
-              tags={tags}
-              setTags={setTags}
-            />{' '}
+            <HashTagsInput tags={tags} setTags={setTags} />{' '}
           </div>
-          <div className={styles['label-and-form']}>
+          <div
+            className={`${styles['label-and-form']} ${styles['image-input']}`}
+          >
             <label className={styles['form-label']}>이미지</label>
             <ImageInput
               name='user-profile'

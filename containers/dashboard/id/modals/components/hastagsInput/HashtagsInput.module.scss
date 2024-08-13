@@ -12,7 +12,12 @@
     outline: none;
   }
   &.dark {
-    background-color: $gray-d9;
+    background-color: $dark-card-top;
+    border: 1px solid $dark-card-top;
+
+    &::placeholder {
+      color: rgba($white, 0.6);
+    }
   }
 }
 

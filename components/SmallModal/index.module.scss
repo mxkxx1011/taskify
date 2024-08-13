@@ -22,7 +22,14 @@
       color: rgba($white, 0.87);
     }
     .input {
-      background-color: $gray-d9;
+      // background-color: $gray-d9;
+      background-color: $dark-card-top;
+      border: 1px solid $dark-card-top;
+      color: rgba($white, 0.78);
+
+      &::placeholder {
+        color: rgba($white, 0.6);
+      }
     }
   }
 

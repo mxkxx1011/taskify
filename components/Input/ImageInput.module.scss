@@ -4,6 +4,21 @@
   width: 182px;
   height: 182px;
   position: relative;
+
+  &.dark {
+    > label {
+      background-color: $dark-card-top;
+      transition: all 0.4s ease;
+
+      &:hover {
+        opacity: 0.9;
+      }
+    }
+
+    svg {
+      fill: rgba($white, 0.87);
+    }
+  }
 }
 
 .label-input {

@@ -22,18 +22,27 @@
       color: rgba($white, 0.87);
     }
     .form-input {
-      background-color: $gray-d9;
+      background-color: $dark-card-top;
+      border: 1px solid $dark-card-top;
+      color: rgba($white, 0.6);
+
+      &::placeholder {
+        color: rgba($white, 0.6);
+      }
     }
 
     .button {
       background-color: $dark-secondary-btn;
       border: none;
+      color: rgba($white, 0.87);
       &.yellow {
         background-color: $main-yellow;
       }
     }
     .date-input {
-      background-color: $gray-d9;
+      background-color: $dark-card-top;
+      border: 1px solid $dark-card-top;
+      color: rgba($white, 0.6);
     }
   }
 }
@@ -80,7 +89,7 @@
   font-size: 16px;
   font-weight: 400;
   line-height: 26px;
-  color: $violet;
+  color: $main-yellow;
 }
 
 .form-input {

@@ -25,6 +25,7 @@
 .title-and-contents {
   @include Flex(column, null, null);
   gap: 6px;
+  width: 45%;
 }
 
 .title {
@@ -38,7 +39,7 @@
 }
 
 .contents {
-  white-space: nowrap;
+  text-wrap: balance;
   @include FontStyle(md, regular, sm, xs);
   color: $black-33;
 }
@@ -51,9 +52,10 @@
 
 @include mobile {
   .container {
+    @include Flex(row, space-between, center);
     width: 100%;
     height: fit-content;
-    padding: 9px 16px;
-    gap: 8px;
+    padding: 9px 20px;
+    gap: 20px;
   }
 }
