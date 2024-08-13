@@ -1,22 +1,19 @@
 import Image from 'next/image';
+import classNames from 'classnames';
 import Header from '@/components/Header/HeaderMain';
 import styles from './index.module.scss';
 
 // 히어로 섹션
-import ManageText from '@/assets/logos/manage.svg';
-import HeroImage from '@/assets/landing/hero-image.svg';
 import Logo from '@/assets/logos/LogoYellowBorder.svg';
 import LoginButton from '@/containers/main/LoginButton';
 
 //중간 섹션
-import LandingImage01 from '@/assets/landing/landing1.png';
 import LandingImage02 from '@/assets/landing/landing2.png';
 
 import SettingList from './SettingList';
 import Footer from './Footer';
 import { SettingListValues } from '@/constants/MainPageConstants';
 import { useTheme } from '@/hooks/useThemeContext';
-import classNames from 'classnames';
 
 function MainPage() {
   const { theme } = useTheme();
@@ -25,7 +22,7 @@ function MainPage() {
     <>
       <Header />
       <main className={classNames(styles['main'], styles[theme])}>
-        <section className={styles['hero-section']}>
+        <section className={classNames(styles['hero-section'])}>
           <Image
             src='/hero-black.png'
             className={styles['hero-img-black']}
@@ -34,6 +31,7 @@ function MainPage() {
             alt='메인 히어로 이미지'
             priority
           />
+
           <Image
             src='/hero-gray.png'
             className={styles['hero-img-gray']}
@@ -43,7 +41,7 @@ function MainPage() {
             priority
           />
 
-          <div className={styles['hero-title']}>
+          <div className={classNames(styles['hero-title'])}>
             <Image
               src='/manage-black.png'
               alt='manage text'
