@@ -24,6 +24,7 @@ export default function AssigneeCard({
             <ProfileIcon
               nickname={assignee.nickname}
               imageUrl={assignee.profileImageUrl}
+              comment={true}
             />
             <p className={styles['contents']}>{assignee.nickname}</p>
           </div>

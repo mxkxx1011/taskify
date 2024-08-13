@@ -76,7 +76,11 @@ function Comment({ comment }: { comment: IComment }) {
   return (
     <>
       <div className={classNames(styles['comment-card'], styles[theme])}>
-        <ProfileIcon nickname={nickname} imageUrl={profileImageUrl} />
+        <ProfileIcon
+          nickname={nickname}
+          imageUrl={profileImageUrl}
+          comment={true}
+        />
 
         <div className={styles['comment-contents']}>
           <div className={styles['comment-header']}>

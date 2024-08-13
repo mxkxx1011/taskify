@@ -13,6 +13,16 @@
   position: relative;
   transition: all 0.4s ease;
 
+  &.comment {
+    @include ResponsiveWidth(34px, 34px, 26px);
+    @include ResponsiveHeight(34px, 34px, 26px);
+  }
+
+  &.card {
+    @include ResponsiveWidth(24px, 24px, 22px);
+    @include ResponsiveHeight(24px, 24px, 22px);
+  }
+
   &.dark {
     border: 2px solid $dark-card-top;
 

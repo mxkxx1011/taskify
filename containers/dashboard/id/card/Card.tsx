@@ -72,6 +72,7 @@ function Card({ card }: { card: ICard }) {
                     <ProfileIcon
                       nickname={assignee.nickname}
                       imageUrl={assignee.profileImageUrl}
+                      card={true}
                     />
                   ) : (
                     <p className={styles['small-txt']}>담당자 미정</p>

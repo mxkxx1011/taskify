@@ -9,12 +9,16 @@ interface ProfileIconProps {
   nickname: string;
   imageUrl: string | null;
   compressRemain?: boolean;
+  comment?: boolean;
+  card?: boolean;
 }
 
 export function ProfileIcon({
   nickname,
   imageUrl,
   compressRemain = false,
+  comment = false,
+  card = false,
 }: ProfileIconProps) {
   const [displayedImageUrl, setDisplayedImageUrl] = useState<string | null>(
     imageUrl,
@@ -29,7 +33,14 @@ export function ProfileIcon({
 
   if (displayedImageUrl) {
     return (
-      <div className={classNames(styles['profile-img'], styles[theme])}>
+      <div
+        className={classNames(
+          styles['profile-img'],
+          styles[theme],
+          card ? styles['card'] : '',
+          comment ? styles['comment'] : '',
+        )}
+      >
         <Image
           src={displayedImageUrl}
           alt='프로필'
